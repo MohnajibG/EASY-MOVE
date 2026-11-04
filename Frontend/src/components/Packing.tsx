@@ -1,30 +1,57 @@
-import { Check } from 'lucide-react'
-import truckBack from '../assets/truck-back.jpg'
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import truckBack from "../assets/truck-back.jpg";
+import packingTape from "../assets/packing-tape.jpg";
 
 const items = [
-  'Télévisions et écrans plats',
-  'Miroirs et vitres',
-  'Lampes et luminaires',
-  'Tableaux et objets décoratifs',
-  'Ordinateurs et électronique',
-  'Vaisselle et objets fragiles',
-]
+  "Télévisions et écrans plats",
+  "Miroirs et vitres",
+  "Lampes et luminaires",
+  "Tableaux et objets décoratifs",
+  "Ordinateurs et électronique",
+  "Vaisselle et objets fragiles",
+];
 
-export default function Packing() {
+const Packing = () => {
   return (
     <section id="emballage" className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand-green/20 to-brand-cyan/10 blur-2xl" />
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="order-2 grid grid-cols-2 gap-4 lg:order-1"
+          >
+            <div className="relative col-span-2">
+              <div className="absolute -inset-4 -z-10 rounded-4xl bg-linear-to-tr from-brand-green/20 to-brand-cyan/10 blur-2xl" />
+              <img
+                src={truckBack}
+                alt="Équipe Easy Move en action"
+                className="w-full rounded-4xl shadow-xl shadow-slate-200"
+              />
+            </div>
             <img
-              src={truckBack}
-              alt="Équipe Easy Move en action"
-              className="w-full rounded-[2rem] shadow-xl shadow-slate-200"
+              src={packingTape}
+              alt="Ruban adhésif Easy Move"
+              className="h-full w-full rounded-2xl object-cover shadow-lg shadow-slate-200"
             />
-          </div>
+            <div className="flex flex-col justify-center rounded-2xl bg-brand-blue p-5 text-white shadow-lg shadow-brand-blue/20">
+              <span className="font-display text-2xl">100%</span>
+              <span className="text-xs text-slate-200">
+                matériel pro fourni
+              </span>
+            </div>
+          </motion.div>
 
-          <div className="order-1 lg:order-2">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="order-1 lg:order-2"
+          >
             <span className="text-sm font-semibold tracking-wide text-brand-blue uppercase">
               Emballage
             </span>
@@ -46,9 +73,11 @@ export default function Packing() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Packing;
