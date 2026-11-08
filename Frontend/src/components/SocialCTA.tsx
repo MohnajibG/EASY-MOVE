@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { SVGProps } from "react";
+import { INSTAGRAM_URL } from "../constants/social";
 
 const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
@@ -34,7 +35,9 @@ const SocialCTA = () => {
           rejoignez la communauté Easy Move.
         </p>
         <a
-          href="#"
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
         >
           Nous suivre

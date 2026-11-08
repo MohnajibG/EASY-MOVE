@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -267,10 +267,6 @@ const BookingForm = () => {
           </p>
         </div>
 
-        <pre id="debug-data" className="mb-2 text-[10px] text-white">
-          {JSON.stringify({ step, data })}
-        </pre>
-
         <div className="overflow-hidden rounded-4xl bg-white shadow-2xl shadow-black">
           {!submitted ? (
             <>
@@ -318,15 +314,12 @@ const BookingForm = () => {
 
               {/* step content */}
               <div className="relative min-h-[360px] overflow-hidden px-6 py-8 sm:px-10">
-                <AnimatePresence mode="wait" custom={direction}>
-                  <motion.div
-                    key={step}
-                    custom={direction}
-                    initial={{ x: direction * 40, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: direction * -40, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
+                <motion.div
+                  key={step}
+                  initial={{ x: direction * 40, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
                     {step === 0 && (
                       <AddressStep
                         title="D'où partez-vous ?"
@@ -534,8 +527,7 @@ const BookingForm = () => {
                         </div>
                       </div>
                     )}
-                  </motion.div>
-                </AnimatePresence>
+                </motion.div>
 
                 {showErrors && !isStepValid(step) && (
                   <p className="mt-4 text-xs font-medium text-red-600">

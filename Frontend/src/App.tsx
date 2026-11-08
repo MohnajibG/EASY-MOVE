@@ -8,10 +8,11 @@ import Pricing from "./components/Pricing";
 import Storage from "./components/Storage";
 import Packing from "./components/Packing";
 import Gallery from "./components/Gallery";
-import Testimonials from "./components/Testimonials";
+// import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import SocialCTA from "./components/SocialCTA";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 const App = () => {
   return (
@@ -27,11 +28,12 @@ const App = () => {
         <Storage />
         <Packing />
         <Gallery />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <FAQ />
         <SocialCTA />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 };

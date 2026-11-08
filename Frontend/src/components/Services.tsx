@@ -73,8 +73,7 @@ const Services = () => {
             Tout ce qu'il faut pour déménager l'esprit tranquille
           </h2>
           <p className="mt-4 text-lg text-black/60">
-            Quel que soit votre besoin, notre équipe s'occupe de tout, de A à
-            Z.
+            Quel que soit votre besoin, notre équipe s'occupe de tout, de A à Z.
           </p>
         </motion.div>
 
@@ -89,16 +88,13 @@ const Services = () => {
             <motion.div
               key={title}
               variants={card}
-              whileHover={{ backgroundColor: "#000000" }}
               className="group bg-white p-7 transition-colors duration-300"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue transition-colors group-hover:bg-brand-green group-hover:text-black">
                 <Icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 text-lg font-bold text-black transition-colors group-hover:text-white">
-                {title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-black/60 transition-colors group-hover:text-white/60">
+              <h3 className="mt-5 text-lg font-bold text-black">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-black/60">
                 {desc}
               </p>
             </motion.div>
