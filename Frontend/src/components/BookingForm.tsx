@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { BOOKING_PHOTOS_BUCKET, supabase } from "../lib/supabase";
 
 type FormData = {
   departAdresse: string;
@@ -137,12 +138,14 @@ const AddressStep = ({
 };
 
 const BookingForm = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [data, setData] = useState<FormData>(emptyForm);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const photosRef = useRef<Photo[]>([]);
@@ -203,6 +206,63 @@ const BookingForm = () => {
     icon: stepIcons[i],
   }));
 
+  const submitBooking = async () => {
+    if (!supabase) {
+      console.error(
+        "Supabase n'est pas configuré : ajoute VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY dans .env.local",
+      );
+      setSubmitError(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    try {
+      const photoUrls: string[] = [];
+      for (const photo of photos) {
+        const ext = photo.file.name.split(".").pop() ?? "jpg";
+        const path = `${crypto.randomUUID()}.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from(BOOKING_PHOTOS_BUCKET)
+          .upload(path, photo.file);
+        if (uploadError) throw uploadError;
+
+        const { data: publicUrl } = supabase.storage
+          .from(BOOKING_PHOTOS_BUCKET)
+          .getPublicUrl(path);
+        photoUrls.push(publicUrl.publicUrl);
+      }
+
+      const { error: insertError } = await supabase.from("booking_requests").insert({
+        lang,
+        depart_adresse: data.departAdresse,
+        depart_etage: data.departEtage,
+        depart_ascenseur: data.departAscenseur || null,
+        arrivee_adresse: data.arriveeAdresse,
+        arrivee_etage: data.arriveeEtage,
+        arrivee_ascenseur: data.arriveeAscenseur || null,
+        type_bien: data.typeBien,
+        description: data.description || null,
+        photos: photoUrls,
+        prenom: data.prenom,
+        nom: data.nom,
+        telephone: data.telephone,
+        email: data.email,
+        date_souhaitee: data.dateSouhaitee,
+        message: data.message || null,
+      });
+      if (insertError) throw insertError;
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Échec de l'envoi du formulaire :", err);
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const goNext = () => {
     if (!isStepValid(step)) {
       setShowErrors(true);
@@ -210,7 +270,7 @@ const BookingForm = () => {
     }
     setShowErrors(false);
     if (step === steps.length - 1) {
-      setSubmitted(true);
+      submitBooking();
       return;
     }
     setDirection(1);
@@ -513,6 +573,11 @@ const BookingForm = () => {
                     {t.booking.errorMsg}
                   </p>
                 )}
+                {submitError && (
+                  <p className="mt-4 text-xs font-medium text-red-600">
+                    {t.booking.submitError}
+                  </p>
+                )}
               </div>
 
               {/* navigation */}
@@ -520,7 +585,7 @@ const BookingForm = () => {
                 <button
                   type="button"
                   onClick={goBack}
-                  disabled={step === 0}
+                  disabled={step === 0 || isSubmitting}
                   className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
                 >
                   <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
@@ -528,18 +593,23 @@ const BookingForm = () => {
                 </button>
 
                 <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.03 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
                   type="button"
                   onClick={goNext}
-                  className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold ${
+                  disabled={isSubmitting}
+                  className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold disabled:opacity-70 ${
                     step === steps.length - 1
                       ? "bg-brand-green text-black"
                       : "bg-brand-blue text-white"
                   }`}
                 >
-                  {step === steps.length - 1 ? t.booking.submitBtn : t.booking.nextBtn}
-                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                  {step === steps.length - 1
+                    ? isSubmitting
+                      ? t.booking.submittingBtn
+                      : t.booking.submitBtn
+                    : t.booking.nextBtn}
+                  {!isSubmitting && <ArrowRight className="h-4 w-4 rtl:rotate-180" />}
                 </motion.button>
               </div>
             </>

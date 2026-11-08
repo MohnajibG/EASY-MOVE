@@ -265,6 +265,8 @@ export const dict = {
       backBtn: "Précédent",
       nextBtn: "Suivant",
       submitBtn: "Envoyer ma demande",
+      submittingBtn: "Envoi en cours...",
+      submitError: "Une erreur est survenue. Vérifiez votre connexion et réessayez, ou contactez-nous directement.",
       successTitle: "Demande envoyée !",
       successMsg: (prenom: string, tel: string) =>
         `Merci ${prenom}, nous avons bien reçu votre demande de devis. Notre équipe vous recontacte très vite au ${tel}.`,
@@ -527,6 +529,8 @@ export const dict = {
       backBtn: "Back",
       nextBtn: "Next",
       submitBtn: "Send my request",
+      submittingBtn: "Sending...",
+      submitError: "Something went wrong. Check your connection and try again, or contact us directly.",
       successTitle: "Request sent!",
       successMsg: (prenom: string, tel: string) =>
         `Thank you ${prenom}, we've received your quote request. Our team will contact you shortly at ${tel}.`,
@@ -786,6 +790,8 @@ export const dict = {
       backBtn: "السابق",
       nextBtn: "التالي",
       submitBtn: "إرسال طلبي",
+      submittingBtn: "جارٍ الإرسال...",
+      submitError: "حدث خطأ ما. تحقق من اتصالك وحاول مجددًا، أو تواصل معنا مباشرة.",
       successTitle: "تم إرسال الطلب!",
       successMsg: (prenom: string, tel: string) =>
         `شكرًا ${prenom}، لقد استلمنا طلب عرض السعر الخاص بك. سيتواصل معك فريقنا قريبًا على الرقم ${tel}.`,
