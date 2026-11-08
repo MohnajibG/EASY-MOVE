@@ -19,12 +19,12 @@ const Pricing = () => {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand-cyan opacity-20 blur-3xl"
+          className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand-cyan opacity-25 blur-3xl"
         />
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-24 left-0 h-80 w-80 rounded-full bg-brand-green opacity-10 blur-3xl"
+          className="absolute -bottom-24 left-0 h-80 w-80 rounded-full bg-brand-green opacity-15 blur-3xl"
         />
       </div>
 
@@ -41,7 +41,7 @@ const Pricing = () => {
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Un prix fixe, sans surprise
           </h2>
-          <p className="mt-5 text-lg text-slate-200">
+          <p className="mt-5 text-lg text-white/70">
             Nous vous donnons un tarif garanti avant le jour de votre
             déménagement. La durée du chargement ne change rien au prix
             annoncé.
@@ -50,7 +50,7 @@ const Pricing = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             href="#devis"
-            className="mt-8 inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-slate-950 shadow-lg shadow-brand-green/20"
+            className="mt-8 inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-black"
           >
             Demander mon prix fixe
           </motion.a>
@@ -61,7 +61,7 @@ const Pricing = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
-          className="rounded-3xl bg-white/5 p-8 ring-1 ring-white/10 backdrop-blur-sm"
+          className="rounded-3xl border border-white/15 bg-black/20 p-8 backdrop-blur-sm"
         >
           <p className="text-sm font-semibold text-brand-cyan">
             Toujours inclus dans votre devis
@@ -77,7 +77,7 @@ const Pricing = () => {
                 className="flex items-start gap-3"
               >
                 <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" />
-                <span className="text-base text-slate-100">{item}</span>
+                <span className="text-base text-white">{item}</span>
               </motion.li>
             ))}
           </ul>

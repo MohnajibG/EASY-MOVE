@@ -22,20 +22,20 @@ const SocialCTA = () => {
         <motion.span
           animate={{ scale: [1, 1.08, 1] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-950 text-white"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-black text-white"
         >
           <InstagramIcon className="h-6 w-6" />
         </motion.span>
-        <h2 className="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">
+        <h2 className="text-2xl font-extrabold tracking-tight text-black sm:text-3xl">
           Suivez notre camion sur les réseaux
         </h2>
-        <p className="max-w-lg text-sm text-slate-800 sm:text-base">
+        <p className="max-w-lg text-sm text-black/70 sm:text-base">
           Coulisses de nos déménagements, astuces d'emballage et bons plans :
           rejoignez la communauté Easy Move.
         </p>
         <a
           href="#"
-          className="rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+          className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
         >
           Nous suivre
         </a>

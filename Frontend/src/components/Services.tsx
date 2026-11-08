@@ -69,10 +69,10 @@ const Services = () => {
           <span className="text-sm font-semibold tracking-wide text-brand-blue uppercase">
             Nos services
           </span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-black sm:text-4xl">
             Tout ce qu'il faut pour déménager l'esprit tranquille
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-lg text-black/60">
             Quel que soit votre besoin, notre équipe s'occupe de tout, de A à
             Z.
           </p>
@@ -83,22 +83,22 @@ const Services = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map(({ icon: Icon, title, desc }) => (
             <motion.div
               key={title}
               variants={card}
-              whileHover={{ y: -6 }}
-              className="group rounded-2xl border border-slate-100 bg-slate-50/60 p-7 transition-colors duration-300 hover:border-brand-blue/20 hover:bg-white hover:shadow-xl hover:shadow-brand-blue/10"
+              whileHover={{ backgroundColor: "#000000" }}
+              className="group bg-white p-7 transition-colors duration-300"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue transition-colors group-hover:bg-brand-blue group-hover:text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue transition-colors group-hover:bg-brand-green group-hover:text-black">
                 <Icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 text-lg font-bold text-slate-900">
+              <h3 className="mt-5 text-lg font-bold text-black transition-colors group-hover:text-white">
                 {title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2 text-sm leading-relaxed text-black/60 transition-colors group-hover:text-white/60">
                 {desc}
               </p>
             </motion.div>

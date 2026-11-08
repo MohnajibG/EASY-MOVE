@@ -28,8 +28,8 @@ const Navbar = () => {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 shadow-sm shadow-black/5 backdrop-blur-lg"
-          : "bg-white/0"
+          ? "bg-black/80 shadow-sm shadow-black/40 backdrop-blur-lg"
+          : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
@@ -41,8 +41,8 @@ const Navbar = () => {
             alt="Easy Move"
             className="h-9 w-9 rounded-lg"
           />
-          <span className="font-display text-lg text-brand-blue">
-            Easy<span className="text-slate-900">Move</span>
+          <span className="font-display text-lg text-white">
+            Easy<span className="text-brand-cyan">Move</span>
           </span>
         </a>
 
@@ -51,7 +51,7 @@ const Navbar = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-brand-blue"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-brand-cyan"
               >
                 {link.label}
               </a>
@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href="tel:0778637433"
-            className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-blue"
+            className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-brand-cyan"
           >
             <Phone className="h-4 w-4" />
             07 78 63 74 33
@@ -71,7 +71,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             href="#accueil"
-            className="rounded-full bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 hover:bg-brand-blue-dark"
+            className="rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-black"
           >
             Devis gratuit
           </motion.a>
@@ -80,7 +80,7 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-white lg:hidden"
           aria-label="Ouvrir le menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -94,7 +94,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-slate-100 bg-white/95 backdrop-blur-lg lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-black/95 backdrop-blur-lg lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-5 py-4">
               {links.map((link) => (
@@ -102,7 +102,7 @@ const Navbar = () => {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue"
+                    className="block rounded-lg px-3 py-2.5 text-base font-medium text-white/80 hover:bg-white/5 hover:text-brand-cyan"
                   >
                     {link.label}
                   </a>
@@ -111,7 +111,7 @@ const Navbar = () => {
               <li className="mt-2 flex flex-col gap-3">
                 <a
                   href="tel:0778637433"
-                  className="flex items-center gap-2 px-3 text-sm font-semibold text-slate-700"
+                  className="flex items-center gap-2 px-3 text-sm font-semibold text-white/80"
                 >
                   <Phone className="h-4 w-4" />
                   07 78 63 74 33
@@ -119,7 +119,7 @@ const Navbar = () => {
                 <a
                   href="#accueil"
                   onClick={() => setOpen(false)}
-                  className="rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white"
+                  className="rounded-full bg-brand-green px-5 py-3 text-center text-sm font-semibold text-black"
                 >
                   Devis gratuit
                 </a>

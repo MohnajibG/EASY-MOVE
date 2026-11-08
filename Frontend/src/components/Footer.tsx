@@ -27,7 +27,7 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-slate-950 pt-20 pb-10">
+    <footer id="contact" className="bg-black pt-20 pb-10">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const Footer = () => {
                 Easy<span className="text-brand-cyan">Move</span>
               </span>
             </a>
-            <p className="mt-4 max-w-xs text-sm text-slate-400">
+            <p className="mt-4 max-w-xs text-sm text-white/50">
               Votre bien, notre priorité. Déménagement résidentiel,
               professionnel et longue distance, partout en Algérie.
             </p>
@@ -55,7 +55,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-brand-cyan"
+                    className="text-sm text-white/50 transition-colors hover:text-brand-cyan"
                   >
                     {link.label}
                   </a>
@@ -70,13 +70,13 @@ const Footer = () => {
               <li>
                 <a
                   href="tel:0778637433"
-                  className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-brand-cyan"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-brand-cyan"
                 >
                   <Phone className="h-4 w-4" />
                   07 78 63 74 33
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm text-slate-400">
+              <li className="flex items-center gap-2 text-sm text-white/50">
                 <MapPin className="h-4 w-4" />
                 Alger, Algérie
               </li>
@@ -89,14 +89,14 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-300 transition-colors hover:bg-brand-blue hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-colors hover:bg-brand-blue hover:text-white"
               >
                 <InstagramIcon className="h-4.5 w-4.5" />
               </a>
               <a
                 href="#"
                 aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-300 transition-colors hover:bg-brand-blue hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 transition-colors hover:bg-brand-blue hover:text-white"
               >
                 <FacebookIcon className="h-4.5 w-4.5" />
               </a>
@@ -105,12 +105,12 @@ const Footer = () => {
         </motion.div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-white/40">
             © {new Date().getFullYear()} Easy Move. Tous droits réservés.
           </p>
           <a
             href="#accueil"
-            className="rounded-full bg-white/5 px-5 py-2 text-xs font-semibold text-slate-300 transition-colors hover:bg-brand-blue hover:text-white"
+            className="rounded-full bg-white/5 px-5 py-2 text-xs font-semibold text-white/60 transition-colors hover:bg-brand-blue hover:text-white"
           >
             Devis gratuit
           </a>

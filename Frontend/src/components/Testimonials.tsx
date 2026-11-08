@@ -36,7 +36,7 @@ const card = {
 
 const Testimonials = () => {
   return (
-    <section id="temoignages" className="bg-slate-50 py-24">
+    <section id="temoignages" className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const Testimonials = () => {
           <span className="text-sm font-semibold tracking-wide text-brand-blue uppercase">
             Avis clients
           </span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-black sm:text-4xl">
             Ils ont déménagé avec Easy Move
           </h2>
         </motion.div>
@@ -58,26 +58,26 @@ const Testimonials = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-black/10 bg-black/10 lg:grid-cols-3"
         >
           {reviews.map((review) => (
             <motion.figure
               key={review.name}
               variants={card}
               whileHover={{ y: -4 }}
-              className="rounded-2xl bg-white p-7 shadow-sm ring-1 ring-slate-100"
+              className="bg-white p-7"
             >
               <div className="flex gap-1 text-brand-green">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-4 text-sm leading-relaxed text-slate-700">
+              <blockquote className="mt-4 text-sm leading-relaxed text-black/70">
                 "{review.text}"
               </blockquote>
-              <figcaption className="mt-5 text-sm font-semibold text-slate-900">
+              <figcaption className="mt-5 text-sm font-semibold text-black">
                 {review.name}{" "}
-                <span className="font-normal text-slate-400">
+                <span className="font-normal text-black/40">
                   — {review.city}
                 </span>
               </figcaption>

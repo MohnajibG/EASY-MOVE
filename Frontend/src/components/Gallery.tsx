@@ -3,17 +3,19 @@ import truckHero from "../assets/truck-hero.jpg";
 import truckBack from "../assets/truck-back.jpg";
 import packingTape from "../assets/packing-tape.jpg";
 import logoLockup from "../assets/logo-lockup-dark.jpg";
+import ladderTruck from "../assets/ladder-truck.jpg";
 
 const photos = [
   { src: truckHero, alt: "Camion Easy Move, vue avant", span: "sm:col-span-2 sm:row-span-2" },
   { src: packingTape, alt: "Ruban adhésif Easy Move", span: "" },
   { src: logoLockup, alt: "Logo Easy Move", span: "" },
-  { src: truckBack, alt: "Camion Easy Move, vue arrière", span: "sm:col-span-2" },
+  { src: truckBack, alt: "Camion Easy Move, vue arrière", span: "" },
+  { src: ladderTruck, alt: "Monte-meuble Easy Move", span: "" },
 ];
 
 const Gallery = () => {
   return (
-    <section className="bg-slate-950 py-24">
+    <section className="bg-black py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +48,7 @@ const Gallery = () => {
                 alt={photo.alt}
                 className="h-full min-h-40 w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-slate-950/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
             </motion.div>
           ))}
         </div>

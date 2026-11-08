@@ -25,21 +25,23 @@ const Packing = () => {
             className="order-2 grid grid-cols-2 gap-4 lg:order-1"
           >
             <div className="relative col-span-2">
-              <div className="absolute -inset-4 -z-10 rounded-4xl bg-linear-to-tr from-brand-green/20 to-brand-cyan/10 blur-2xl" />
+              <div className="absolute -inset-4 -z-10 rounded-4xl bg-linear-to-tr from-brand-green/25 to-brand-cyan/15 blur-2xl" />
               <img
                 src={truckBack}
                 alt="Équipe Easy Move en action"
-                className="w-full rounded-4xl shadow-xl shadow-slate-200"
+                className="w-full rounded-4xl shadow-xl shadow-black/10"
               />
             </div>
             <img
               src={packingTape}
               alt="Ruban adhésif Easy Move"
-              className="h-full w-full rounded-2xl object-cover shadow-lg shadow-slate-200"
+              className="h-full w-full rounded-2xl object-cover shadow-lg shadow-black/10"
             />
-            <div className="flex flex-col justify-center rounded-2xl bg-brand-blue p-5 text-white shadow-lg shadow-brand-blue/20">
-              <span className="font-display text-2xl">100%</span>
-              <span className="text-xs text-slate-200">
+            <div className="flex flex-col justify-center rounded-2xl bg-black p-5 text-white">
+              <span className="font-display text-2xl text-brand-cyan">
+                100%
+              </span>
+              <span className="text-xs text-white/60">
                 matériel pro fourni
               </span>
             </div>
@@ -55,10 +57,10 @@ const Packing = () => {
             <span className="text-sm font-semibold tracking-wide text-brand-blue uppercase">
               Emballage
             </span>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-black sm:text-4xl">
               On emballe, vous n'avez rien à faire
             </h2>
-            <p className="mt-5 text-lg text-slate-600">
+            <p className="mt-5 text-lg text-black/60">
               Matériel professionnel et méthode adaptée à chaque objet. Voici
               ce que nous emballons avec le plus grand soin :
             </p>
@@ -66,10 +68,10 @@ const Packing = () => {
             <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {items.map((item) => (
                 <li key={item} className="flex items-center gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/20 text-brand-blue">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green text-black">
                     <Check className="h-3.5 w-3.5" />
                   </span>
-                  <span className="text-sm text-slate-700">{item}</span>
+                  <span className="text-sm text-black/80">{item}</span>
                 </li>
               ))}
             </ul>

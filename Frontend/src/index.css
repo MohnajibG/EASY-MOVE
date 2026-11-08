@@ -2,8 +2,6 @@
 
 @theme {
   --color-brand-blue: #1b1aff;
-  --color-brand-blue-dark: #0f0ec2;
-  --color-brand-blue-light: #4b4aff;
   --color-brand-green: #a6f36a;
   --color-brand-cyan: #58fde9;
 
@@ -13,10 +11,12 @@
 
 html {
   scroll-behavior: smooth;
+  background: #000;
 }
 
 body {
   font-family: var(--font-sans);
+  background: #000;
 }
 
 h1,
@@ -29,4 +29,12 @@ h3,
 
 section[id] {
   scroll-margin-top: 84px;
+}
+
+/* faint brand-colored grid, used behind dark sections */
+.grid-texture {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
 }

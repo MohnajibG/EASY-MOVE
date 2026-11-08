@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import BookingForm from "./components/BookingForm";
 import TrustBar from "./components/TrustBar";
 import Services from "./components/Services";
 import WhyUs from "./components/WhyUs";
@@ -18,6 +19,7 @@ const App = () => {
       <Navbar />
       <main>
         <Hero />
+        <BookingForm />
         <TrustBar />
         <Services />
         <WhyUs />

@@ -41,12 +41,12 @@ const FAQ = () => {
           <span className="text-sm font-semibold tracking-wide text-brand-blue uppercase">
             Questions fréquentes
           </span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-black sm:text-4xl">
             Tout ce que vous devez savoir
           </h2>
         </motion.div>
 
-        <div className="mt-12 divide-y divide-slate-100 rounded-2xl bg-slate-50/60 ring-1 ring-slate-100">
+        <div className="mt-12 divide-y divide-black/10 rounded-2xl border border-black/10">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -56,9 +56,7 @@ const FAQ = () => {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="font-semibold text-slate-900">
-                    {faq.q}
-                  </span>
+                  <span className="font-semibold text-black">{faq.q}</span>
                   <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -75,7 +73,7 @@ const FAQ = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-5 text-sm leading-relaxed text-slate-600">
+                      <p className="pb-5 text-sm leading-relaxed text-black/60">
                         {faq.a}
                       </p>
                     </motion.div>
