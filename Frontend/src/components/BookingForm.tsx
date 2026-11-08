@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type DragEvent,
+} from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -186,7 +192,8 @@ const BookingForm = () => {
   };
 
   const isStepValid = (s: number) => {
-    if (s === 0) return data.departAdresse.trim() !== "" && data.departEtage !== "";
+    if (s === 0)
+      return data.departAdresse.trim() !== "" && data.departEtage !== "";
     if (s === 1)
       return data.arriveeAdresse.trim() !== "" && data.arriveeEtage !== "";
     if (s === 2) return data.typeBien !== "";
@@ -234,24 +241,26 @@ const BookingForm = () => {
         photoUrls.push(publicUrl.publicUrl);
       }
 
-      const { error: insertError } = await supabase.from("booking_requests").insert({
-        lang,
-        depart_adresse: data.departAdresse,
-        depart_etage: data.departEtage,
-        depart_ascenseur: data.departAscenseur || null,
-        arrivee_adresse: data.arriveeAdresse,
-        arrivee_etage: data.arriveeEtage,
-        arrivee_ascenseur: data.arriveeAscenseur || null,
-        type_bien: data.typeBien,
-        description: data.description || null,
-        photos: photoUrls,
-        prenom: data.prenom,
-        nom: data.nom,
-        telephone: data.telephone,
-        email: data.email,
-        date_souhaitee: data.dateSouhaitee,
-        message: data.message || null,
-      });
+      const { error: insertError } = await supabase
+        .from("booking_requests")
+        .insert({
+          lang,
+          depart_adresse: data.departAdresse,
+          depart_etage: data.departEtage,
+          depart_ascenseur: data.departAscenseur || null,
+          arrivee_adresse: data.arriveeAdresse,
+          arrivee_etage: data.arriveeEtage,
+          arrivee_ascenseur: data.arriveeAscenseur || null,
+          type_bien: data.typeBien,
+          description: data.description || null,
+          photos: photoUrls,
+          prenom: data.prenom,
+          nom: data.nom,
+          telephone: data.telephone,
+          email: data.email,
+          date_souhaitee: data.dateSouhaitee,
+          message: data.message || null,
+        });
       if (insertError) throw insertError;
 
       setSubmitted(true);
@@ -312,12 +321,19 @@ const BookingForm = () => {
               {/* stepper */}
               <div className="flex items-center gap-2 border-b border-black/10 px-6 py-5 sm:gap-4 sm:px-10">
                 {steps.map((s, i) => (
-                  <div key={s.label} className="flex flex-1 items-center gap-2 sm:gap-4">
+                  <div
+                    key={s.label}
+                    className="flex flex-1 items-center gap-2 sm:gap-4"
+                  >
                     <div className="flex flex-col items-center gap-1.5">
                       <motion.div
                         animate={{
                           backgroundColor:
-                            i < step ? "#1b1aff" : i === step ? "#1b1aff" : "#f4f4f5",
+                            i < step
+                              ? "#1b1aff"
+                              : i === step
+                                ? "#1b1aff"
+                                : "#f4f4f5",
                           scale: i === step ? 1.1 : 1,
                         }}
                         className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
@@ -352,220 +368,229 @@ const BookingForm = () => {
               </div>
 
               {/* step content */}
-              <div className="relative min-h-[360px] overflow-hidden px-6 py-8 sm:px-10">
+              <div className="relative min-h-90 overflow-hidden px-6 py-8 sm:px-10">
                 <motion.div
                   key={step}
                   initial={{ x: direction * 40, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                    {step === 0 && (
-                      <AddressStep
-                        title={t.booking.step0Title}
-                        adresse={data.departAdresse}
-                        etage={data.departEtage}
-                        ascenseur={data.departAscenseur}
-                        onAdresse={(v) => set("departAdresse", v)}
-                        onEtage={(v) => set("departEtage", v)}
-                        onAscenseur={(v) => set("departAscenseur", v)}
-                        placeholder={t.booking.addressPlaceholder}
-                      />
-                    )}
+                  {step === 0 && (
+                    <AddressStep
+                      title={t.booking.step0Title}
+                      adresse={data.departAdresse}
+                      etage={data.departEtage}
+                      ascenseur={data.departAscenseur}
+                      onAdresse={(v) => set("departAdresse", v)}
+                      onEtage={(v) => set("departEtage", v)}
+                      onAscenseur={(v) => set("departAscenseur", v)}
+                      placeholder={t.booking.addressPlaceholder}
+                    />
+                  )}
 
-                    {step === 1 && (
-                      <AddressStep
-                        title={t.booking.step1Title}
-                        adresse={data.arriveeAdresse}
-                        etage={data.arriveeEtage}
-                        ascenseur={data.arriveeAscenseur}
-                        onAdresse={(v) => set("arriveeAdresse", v)}
-                        onEtage={(v) => set("arriveeEtage", v)}
-                        onAscenseur={(v) => set("arriveeAscenseur", v)}
-                        placeholder={t.booking.addressPlaceholder}
-                      />
-                    )}
+                  {step === 1 && (
+                    <AddressStep
+                      title={t.booking.step1Title}
+                      adresse={data.arriveeAdresse}
+                      etage={data.arriveeEtage}
+                      ascenseur={data.arriveeAscenseur}
+                      onAdresse={(v) => set("arriveeAdresse", v)}
+                      onEtage={(v) => set("arriveeEtage", v)}
+                      onAscenseur={(v) => set("arriveeAscenseur", v)}
+                      placeholder={t.booking.addressPlaceholder}
+                    />
+                  )}
 
-                    {step === 2 && (
-                      <div className="space-y-5">
-                        <h3 className="text-xl font-bold text-black">
-                          {t.booking.step2Title}
-                        </h3>
+                  {step === 2 && (
+                    <div className="space-y-5">
+                      <h3 className="text-xl font-bold text-black">
+                        {t.booking.step2Title}
+                      </h3>
 
-                        <div>
-                          <label className={labelClass}>
-                            {t.booking.bienTypeLabel}
-                          </label>
-                          <div className="flex flex-wrap gap-2">
-                            {t.booking.bienTypes.map((type) => (
-                              <button
-                                key={type}
-                                type="button"
-                                onClick={() => set("typeBien", type)}
-                                className={`rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                                  data.typeBien === type
-                                    ? "border-brand-blue bg-brand-blue text-white"
-                                    : "border-black/10 text-black/60 hover:border-black/20"
-                                }`}
+                      <div>
+                        <label className={labelClass}>
+                          {t.booking.bienTypeLabel}
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                          {t.booking.bienTypes.map((type) => (
+                            <button
+                              key={type}
+                              type="button"
+                              onClick={() => set("typeBien", type)}
+                              className={`rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+                                data.typeBien === type
+                                  ? "border-brand-blue bg-brand-blue text-white"
+                                  : "border-black/10 text-black/60 hover:border-black/20"
+                              }`}
+                            >
+                              {type}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className={labelClass}>
+                          {t.booking.descLabel}
+                        </label>
+                        <textarea
+                          value={data.description}
+                          onChange={(e) => set("description", e.target.value)}
+                          rows={3}
+                          placeholder={t.booking.descPlaceholder}
+                          className={`${inputClass} resize-none`}
+                        />
+                      </div>
+
+                      <div>
+                        <label className={labelClass}>
+                          {t.booking.photosLabel}
+                        </label>
+                        <label
+                          htmlFor="photos"
+                          onDragOver={(e) => {
+                            e.preventDefault();
+                            setDragActive(true);
+                          }}
+                          onDragLeave={() => setDragActive(false)}
+                          onDrop={onDrop}
+                          className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed px-4 py-8 text-center transition-colors ${
+                            dragActive
+                              ? "border-brand-blue bg-brand-blue/5"
+                              : "border-black/15 hover:border-black/30"
+                          }`}
+                        >
+                          <ImagePlus className="h-6 w-6 text-black/40" />
+                          <p className="text-xs text-black/50">
+                            {t.booking.dropzoneText}{" "}
+                            <span className="font-semibold text-brand-blue">
+                              {t.booking.browseText}
+                            </span>{" "}
+                            {t.booking.maxPhotos}
+                          </p>
+                          <input
+                            id="photos"
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            className="hidden"
+                            onChange={onFileInput}
+                          />
+                        </label>
+
+                        {photos.length > 0 && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {photos.map((p) => (
+                              <div
+                                key={p.url}
+                                className="group relative h-16 w-16"
                               >
-                                {type}
-                              </button>
+                                <img
+                                  src={p.url}
+                                  alt=""
+                                  className="h-full w-full rounded-lg object-cover"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => removePhoto(p.url)}
+                                  className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white"
+                                  aria-label={t.booking.removePhotoAria}
+                                >
+                                  <X className="h-3 w-3" />
+                                </button>
+                              </div>
                             ))}
                           </div>
-                        </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
+                  {step === 3 && (
+                    <div className="space-y-5">
+                      <h3 className="text-xl font-bold text-black">
+                        {t.booking.step3Title}
+                      </h3>
+
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                           <label className={labelClass}>
-                            {t.booking.descLabel}
+                            {t.booking.prenomLabel}
+                          </label>
+                          <input
+                            type="text"
+                            value={data.prenom}
+                            onChange={(e) => set("prenom", e.target.value)}
+                            className={inputClass}
+                          />
+                        </div>
+                        <div>
+                          <label className={labelClass}>
+                            {t.booking.nomLabel}
+                          </label>
+                          <input
+                            type="text"
+                            value={data.nom}
+                            onChange={(e) => set("nom", e.target.value)}
+                            className={inputClass}
+                          />
+                        </div>
+                        <div>
+                          <label className={labelClass}>
+                            <Phone className="me-1 inline h-3 w-3" />
+                            {t.booking.telLabel}
+                          </label>
+                          <input
+                            type="tel"
+                            value={data.telephone}
+                            onChange={(e) => set("telephone", e.target.value)}
+                            placeholder={t.booking.telPlaceholder}
+                            className={inputClass}
+                          />
+                        </div>
+                        <div>
+                          <label className={labelClass}>
+                            <Mail className="me-1 inline h-3 w-3" />
+                            {t.booking.emailLabel}
+                          </label>
+                          <input
+                            type="email"
+                            value={data.email}
+                            onChange={(e) => set("email", e.target.value)}
+                            placeholder={t.booking.emailPlaceholder}
+                            className={inputClass}
+                          />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className={labelClass}>
+                            <Calendar className="me-1 inline h-3 w-3" />
+                            {t.booking.dateLabel}
+                          </label>
+                          <input
+                            type="date"
+                            value={data.dateSouhaitee}
+                            onChange={(e) =>
+                              set("dateSouhaitee", e.target.value)
+                            }
+                            className={inputClass}
+                          />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className={labelClass}>
+                            <MessageSquare className="me-1 inline h-3 w-3" />
+                            {t.booking.messageLabel}
                           </label>
                           <textarea
-                            value={data.description}
-                            onChange={(e) => set("description", e.target.value)}
-                            rows={3}
-                            placeholder={t.booking.descPlaceholder}
+                            value={data.message}
+                            onChange={(e) => set("message", e.target.value)}
+                            rows={2}
+                            placeholder={t.booking.messagePlaceholder}
                             className={`${inputClass} resize-none`}
                           />
                         </div>
-
-                        <div>
-                          <label className={labelClass}>
-                            {t.booking.photosLabel}
-                          </label>
-                          <label
-                            htmlFor="photos"
-                            onDragOver={(e) => {
-                              e.preventDefault();
-                              setDragActive(true);
-                            }}
-                            onDragLeave={() => setDragActive(false)}
-                            onDrop={onDrop}
-                            className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed px-4 py-8 text-center transition-colors ${
-                              dragActive
-                                ? "border-brand-blue bg-brand-blue/5"
-                                : "border-black/15 hover:border-black/30"
-                            }`}
-                          >
-                            <ImagePlus className="h-6 w-6 text-black/40" />
-                            <p className="text-xs text-black/50">
-                              {t.booking.dropzoneText}{" "}
-                              <span className="font-semibold text-brand-blue">
-                                {t.booking.browseText}
-                              </span>{" "}
-                              {t.booking.maxPhotos}
-                            </p>
-                            <input
-                              id="photos"
-                              type="file"
-                              accept="image/*"
-                              multiple
-                              className="hidden"
-                              onChange={onFileInput}
-                            />
-                          </label>
-
-                          {photos.length > 0 && (
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {photos.map((p) => (
-                                <div key={p.url} className="group relative h-16 w-16">
-                                  <img
-                                    src={p.url}
-                                    alt=""
-                                    className="h-full w-full rounded-lg object-cover"
-                                  />
-                                  <button
-                                    type="button"
-                                    onClick={() => removePhoto(p.url)}
-                                    className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white"
-                                    aria-label={t.booking.removePhotoAria}
-                                  >
-                                    <X className="h-3 w-3" />
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
                       </div>
-                    )}
-
-                    {step === 3 && (
-                      <div className="space-y-5">
-                        <h3 className="text-xl font-bold text-black">
-                          {t.booking.step3Title}
-                        </h3>
-
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <div>
-                            <label className={labelClass}>{t.booking.prenomLabel}</label>
-                            <input
-                              type="text"
-                              value={data.prenom}
-                              onChange={(e) => set("prenom", e.target.value)}
-                              className={inputClass}
-                            />
-                          </div>
-                          <div>
-                            <label className={labelClass}>{t.booking.nomLabel}</label>
-                            <input
-                              type="text"
-                              value={data.nom}
-                              onChange={(e) => set("nom", e.target.value)}
-                              className={inputClass}
-                            />
-                          </div>
-                          <div>
-                            <label className={labelClass}>
-                              <Phone className="me-1 inline h-3 w-3" />
-                              {t.booking.telLabel}
-                            </label>
-                            <input
-                              type="tel"
-                              value={data.telephone}
-                              onChange={(e) => set("telephone", e.target.value)}
-                              placeholder={t.booking.telPlaceholder}
-                              className={inputClass}
-                            />
-                          </div>
-                          <div>
-                            <label className={labelClass}>
-                              <Mail className="me-1 inline h-3 w-3" />
-                              {t.booking.emailLabel}
-                            </label>
-                            <input
-                              type="email"
-                              value={data.email}
-                              onChange={(e) => set("email", e.target.value)}
-                              placeholder={t.booking.emailPlaceholder}
-                              className={inputClass}
-                            />
-                          </div>
-                          <div className="sm:col-span-2">
-                            <label className={labelClass}>
-                              <Calendar className="me-1 inline h-3 w-3" />
-                              {t.booking.dateLabel}
-                            </label>
-                            <input
-                              type="date"
-                              value={data.dateSouhaitee}
-                              onChange={(e) => set("dateSouhaitee", e.target.value)}
-                              className={inputClass}
-                            />
-                          </div>
-                          <div className="sm:col-span-2">
-                            <label className={labelClass}>
-                              <MessageSquare className="me-1 inline h-3 w-3" />
-                              {t.booking.messageLabel}
-                            </label>
-                            <textarea
-                              value={data.message}
-                              onChange={(e) => set("message", e.target.value)}
-                              rows={2}
-                              placeholder={t.booking.messagePlaceholder}
-                              className={`${inputClass} resize-none`}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                    </div>
+                  )}
                 </motion.div>
 
                 {showErrors && !isStepValid(step) && (
@@ -609,7 +634,9 @@ const BookingForm = () => {
                       ? t.booking.submittingBtn
                       : t.booking.submitBtn
                     : t.booking.nextBtn}
-                  {!isSubmitting && <ArrowRight className="h-4 w-4 rtl:rotate-180" />}
+                  {!isSubmitting && (
+                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                  )}
                 </motion.button>
               </div>
             </>
