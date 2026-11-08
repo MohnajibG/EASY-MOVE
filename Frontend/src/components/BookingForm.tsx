@@ -15,6 +15,7 @@ import {
   User,
   X,
 } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 type FormData = {
   departAdresse: string;
@@ -50,37 +51,7 @@ const emptyForm: FormData = {
   message: "",
 };
 
-const floors = [
-  "Rez-de-chaussée",
-  "1er étage",
-  "2e étage",
-  "3e étage",
-  "4e étage",
-  "5e étage",
-  "6e étage",
-  "7e étage",
-  "8e étage",
-  "9e étage",
-  "10e étage ou +",
-];
-
-const bienTypes = [
-  "Studio / F1",
-  "F2",
-  "F3",
-  "F4",
-  "F5 et +",
-  "Maison",
-  "Bureau",
-  "Autre",
-];
-
-const steps = [
-  { label: "Départ", icon: MapPin },
-  { label: "Arrivée", icon: Navigation },
-  { label: "À déménager", icon: Building2 },
-  { label: "Vos infos", icon: User },
-];
+const stepIcons = [MapPin, Navigation, Building2, User];
 
 type Photo = { file: File; url: string };
 
@@ -102,66 +73,71 @@ const AddressStep = ({
   onEtage: (v: string) => void;
   onAscenseur: (v: "oui" | "non") => void;
   placeholder: string;
-}) => (
-  <div className="space-y-5">
-    <h3 className="text-xl font-bold text-black">{title}</h3>
+}) => {
+  const { t } = useLanguage();
 
-    <div>
-      <label className="mb-1.5 block text-xs font-semibold text-black/50">
-        Adresse *
-      </label>
-      <input
-        type="text"
-        value={adresse}
-        onChange={(e) => onAdresse(e.target.value)}
-        placeholder={placeholder}
-        className="w-full rounded-xl border border-black/10 px-4 py-3 text-sm text-black outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-      />
-    </div>
+  return (
+    <div className="space-y-5">
+      <h3 className="text-xl font-bold text-black">{title}</h3>
 
-    <div>
-      <label className="mb-1.5 block text-xs font-semibold text-black/50">
-        Étage *
-      </label>
-      <select
-        value={etage}
-        onChange={(e) => onEtage(e.target.value)}
-        className="w-full rounded-xl border border-black/10 px-4 py-3 text-sm text-black outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-      >
-        <option value="" disabled>
-          Choisir un étage
-        </option>
-        {floors.map((f) => (
-          <option key={f}>{f}</option>
-        ))}
-      </select>
-    </div>
+      <div>
+        <label className="mb-1.5 block text-xs font-semibold text-black/50">
+          {t.booking.addressLabel}
+        </label>
+        <input
+          type="text"
+          value={adresse}
+          onChange={(e) => onAdresse(e.target.value)}
+          placeholder={placeholder}
+          className="w-full rounded-xl border border-black/10 px-4 py-3 text-sm text-black outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+        />
+      </div>
 
-    <div>
-      <label className="mb-1.5 block text-xs font-semibold text-black/50">
-        Ascenseur disponible ?
-      </label>
-      <div className="flex gap-3">
-        {(["oui", "non"] as const).map((v) => (
-          <button
-            key={v}
-            type="button"
-            onClick={() => onAscenseur(v)}
-            className={`rounded-xl border px-5 py-2.5 text-sm font-semibold capitalize transition-colors ${
-              ascenseur === v
-                ? "border-brand-blue bg-brand-blue text-white"
-                : "border-black/10 text-black/60 hover:border-black/20"
-            }`}
-          >
-            {v}
-          </button>
-        ))}
+      <div>
+        <label className="mb-1.5 block text-xs font-semibold text-black/50">
+          {t.booking.floorLabel}
+        </label>
+        <select
+          value={etage}
+          onChange={(e) => onEtage(e.target.value)}
+          className="w-full rounded-xl border border-black/10 px-4 py-3 text-sm text-black outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+        >
+          <option value="" disabled>
+            {t.booking.floorPlaceholder}
+          </option>
+          {t.booking.floors.map((f) => (
+            <option key={f}>{f}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className="mb-1.5 block text-xs font-semibold text-black/50">
+          {t.booking.elevatorLabel}
+        </label>
+        <div className="flex gap-3">
+          {(["oui", "non"] as const).map((v) => (
+            <button
+              key={v}
+              type="button"
+              onClick={() => onAscenseur(v)}
+              className={`rounded-xl border px-5 py-2.5 text-sm font-semibold capitalize transition-colors ${
+                ascenseur === v
+                  ? "border-brand-blue bg-brand-blue text-white"
+                  : "border-black/10 text-black/60 hover:border-black/20"
+              }`}
+            >
+              {v === "oui" ? t.booking.yes : t.booking.no}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const BookingForm = () => {
+  const { t } = useLanguage();
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [data, setData] = useState<FormData>(emptyForm);
@@ -222,6 +198,11 @@ const BookingForm = () => {
     return true;
   };
 
+  const steps = t.booking.stepLabels.map((label, i) => ({
+    label,
+    icon: stepIcons[i],
+  }));
+
   const goNext = () => {
     if (!isStepValid(step)) {
       setShowErrors(true);
@@ -257,14 +238,12 @@ const BookingForm = () => {
       >
         <div className="mb-8 text-center">
           <span className="text-sm font-semibold tracking-wide text-brand-cyan uppercase">
-            Devis gratuit
+            {t.booking.eyebrow}
           </span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Votre déménagement en 4 étapes
+            {t.booking.title}
           </h2>
-          <p className="mt-3 text-white/60">
-            2 minutes suffisent, c'est gratuit et sans engagement.
-          </p>
+          <p className="mt-3 text-white/60">{t.booking.subtitle}</p>
         </div>
 
         <div className="overflow-hidden rounded-4xl bg-white shadow-2xl shadow-black">
@@ -322,42 +301,42 @@ const BookingForm = () => {
                 >
                     {step === 0 && (
                       <AddressStep
-                        title="D'où partez-vous ?"
+                        title={t.booking.step0Title}
                         adresse={data.departAdresse}
                         etage={data.departEtage}
                         ascenseur={data.departAscenseur}
                         onAdresse={(v) => set("departAdresse", v)}
                         onEtage={(v) => set("departEtage", v)}
                         onAscenseur={(v) => set("departAscenseur", v)}
-                        placeholder="Ville, quartier, rue..."
+                        placeholder={t.booking.addressPlaceholder}
                       />
                     )}
 
                     {step === 1 && (
                       <AddressStep
-                        title="Où emménagez-vous ?"
+                        title={t.booking.step1Title}
                         adresse={data.arriveeAdresse}
                         etage={data.arriveeEtage}
                         ascenseur={data.arriveeAscenseur}
                         onAdresse={(v) => set("arriveeAdresse", v)}
                         onEtage={(v) => set("arriveeEtage", v)}
                         onAscenseur={(v) => set("arriveeAscenseur", v)}
-                        placeholder="Ville, quartier, rue..."
+                        placeholder={t.booking.addressPlaceholder}
                       />
                     )}
 
                     {step === 2 && (
                       <div className="space-y-5">
                         <h3 className="text-xl font-bold text-black">
-                          Qu'y a-t-il à déménager ?
+                          {t.booking.step2Title}
                         </h3>
 
                         <div>
                           <label className={labelClass}>
-                            Type de bien *
+                            {t.booking.bienTypeLabel}
                           </label>
                           <div className="flex flex-wrap gap-2">
-                            {bienTypes.map((type) => (
+                            {t.booking.bienTypes.map((type) => (
                               <button
                                 key={type}
                                 type="button"
@@ -376,20 +355,20 @@ const BookingForm = () => {
 
                         <div>
                           <label className={labelClass}>
-                            Décrivez ce qu'il faut déménager
+                            {t.booking.descLabel}
                           </label>
                           <textarea
                             value={data.description}
                             onChange={(e) => set("description", e.target.value)}
                             rows={3}
-                            placeholder="Ex : salon complet, 2 chambres, électroménager, pas d'objets fragiles particuliers..."
+                            placeholder={t.booking.descPlaceholder}
                             className={`${inputClass} resize-none`}
                           />
                         </div>
 
                         <div>
                           <label className={labelClass}>
-                            Photos pour estimer le volume (optionnel)
+                            {t.booking.photosLabel}
                           </label>
                           <label
                             htmlFor="photos"
@@ -407,11 +386,11 @@ const BookingForm = () => {
                           >
                             <ImagePlus className="h-6 w-6 text-black/40" />
                             <p className="text-xs text-black/50">
-                              Glissez vos photos ici ou{" "}
+                              {t.booking.dropzoneText}{" "}
                               <span className="font-semibold text-brand-blue">
-                                parcourir
+                                {t.booking.browseText}
                               </span>{" "}
-                              (8 max)
+                              {t.booking.maxPhotos}
                             </p>
                             <input
                               id="photos"
@@ -436,7 +415,7 @@ const BookingForm = () => {
                                     type="button"
                                     onClick={() => removePhoto(p.url)}
                                     className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white"
-                                    aria-label="Retirer la photo"
+                                    aria-label={t.booking.removePhotoAria}
                                   >
                                     <X className="h-3 w-3" />
                                   </button>
@@ -451,12 +430,12 @@ const BookingForm = () => {
                     {step === 3 && (
                       <div className="space-y-5">
                         <h3 className="text-xl font-bold text-black">
-                          Vos informations
+                          {t.booking.step3Title}
                         </h3>
 
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                           <div>
-                            <label className={labelClass}>Prénom *</label>
+                            <label className={labelClass}>{t.booking.prenomLabel}</label>
                             <input
                               type="text"
                               value={data.prenom}
@@ -465,7 +444,7 @@ const BookingForm = () => {
                             />
                           </div>
                           <div>
-                            <label className={labelClass}>Nom *</label>
+                            <label className={labelClass}>{t.booking.nomLabel}</label>
                             <input
                               type="text"
                               value={data.nom}
@@ -475,34 +454,34 @@ const BookingForm = () => {
                           </div>
                           <div>
                             <label className={labelClass}>
-                              <Phone className="mr-1 inline h-3 w-3" />
-                              Téléphone *
+                              <Phone className="me-1 inline h-3 w-3" />
+                              {t.booking.telLabel}
                             </label>
                             <input
                               type="tel"
                               value={data.telephone}
                               onChange={(e) => set("telephone", e.target.value)}
-                              placeholder="05 XX XX XX XX"
+                              placeholder={t.booking.telPlaceholder}
                               className={inputClass}
                             />
                           </div>
                           <div>
                             <label className={labelClass}>
-                              <Mail className="mr-1 inline h-3 w-3" />
-                              Email *
+                              <Mail className="me-1 inline h-3 w-3" />
+                              {t.booking.emailLabel}
                             </label>
                             <input
                               type="email"
                               value={data.email}
                               onChange={(e) => set("email", e.target.value)}
-                              placeholder="vous@email.com"
+                              placeholder={t.booking.emailPlaceholder}
                               className={inputClass}
                             />
                           </div>
                           <div className="sm:col-span-2">
                             <label className={labelClass}>
-                              <Calendar className="mr-1 inline h-3 w-3" />
-                              Date souhaitée *
+                              <Calendar className="me-1 inline h-3 w-3" />
+                              {t.booking.dateLabel}
                             </label>
                             <input
                               type="date"
@@ -513,14 +492,14 @@ const BookingForm = () => {
                           </div>
                           <div className="sm:col-span-2">
                             <label className={labelClass}>
-                              <MessageSquare className="mr-1 inline h-3 w-3" />
-                              Message (optionnel)
+                              <MessageSquare className="me-1 inline h-3 w-3" />
+                              {t.booking.messageLabel}
                             </label>
                             <textarea
                               value={data.message}
                               onChange={(e) => set("message", e.target.value)}
                               rows={2}
-                              placeholder="Une précision à nous donner ?"
+                              placeholder={t.booking.messagePlaceholder}
                               className={`${inputClass} resize-none`}
                             />
                           </div>
@@ -531,7 +510,7 @@ const BookingForm = () => {
 
                 {showErrors && !isStepValid(step) && (
                   <p className="mt-4 text-xs font-medium text-red-600">
-                    Merci de remplir les champs marqués d'un *.
+                    {t.booking.errorMsg}
                   </p>
                 )}
               </div>
@@ -544,8 +523,8 @@ const BookingForm = () => {
                   disabled={step === 0}
                   className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
                 >
-                  <ArrowLeft className="h-4 w-4" />
-                  Précédent
+                  <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
+                  {t.booking.backBtn}
                 </button>
 
                 <motion.button
@@ -559,8 +538,8 @@ const BookingForm = () => {
                       : "bg-brand-blue text-white"
                   }`}
                 >
-                  {step === steps.length - 1 ? "Envoyer ma demande" : "Suivant"}
-                  <ArrowRight className="h-4 w-4" />
+                  {step === steps.length - 1 ? t.booking.submitBtn : t.booking.nextBtn}
+                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </motion.button>
               </div>
             </>
@@ -579,12 +558,10 @@ const BookingForm = () => {
                 <Check className="h-8 w-8 text-black" />
               </motion.span>
               <h3 className="text-2xl font-bold text-black">
-                Demande envoyée !
+                {t.booking.successTitle}
               </h3>
               <p className="max-w-sm text-black/60">
-                Merci {data.prenom}, nous avons bien reçu votre demande de
-                devis. Notre équipe vous recontacte très vite au{" "}
-                {data.telephone}.
+                {t.booking.successMsg(data.prenom, data.telephone)}
               </p>
             </motion.div>
           )}

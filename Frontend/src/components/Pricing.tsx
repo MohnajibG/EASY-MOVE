@@ -1,15 +1,10 @@
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
-
-const included = [
-  "Devis ferme avant le jour J",
-  "Main d'œuvre et carburant inclus",
-  "Protection de vos meubles",
-  "Protection murs, sols et portes",
-  "Aucun frais caché, jamais",
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 const Pricing = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="tarifs"
@@ -36,23 +31,19 @@ const Pricing = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-sm font-semibold tracking-wide text-brand-cyan uppercase">
-            Tarification
+            {t.pricing.eyebrow}
           </span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Un prix fixe, sans surprise
+            {t.pricing.title}
           </h2>
-          <p className="mt-5 text-lg text-white/70">
-            Nous vous donnons un tarif garanti avant le jour de votre
-            déménagement. La durée du chargement ne change rien au prix
-            annoncé.
-          </p>
+          <p className="mt-5 text-lg text-white/70">{t.pricing.subtitle}</p>
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             href="#devis"
             className="mt-8 inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-black"
           >
-            Demander mon prix fixe
+            {t.pricing.cta}
           </motion.a>
         </motion.div>
 
@@ -64,10 +55,10 @@ const Pricing = () => {
           className="rounded-3xl border border-white/15 bg-black/20 p-8 backdrop-blur-sm"
         >
           <p className="text-sm font-semibold text-brand-cyan">
-            Toujours inclus dans votre devis
+            {t.pricing.includedTitle}
           </p>
           <ul className="mt-5 space-y-4">
-            {included.map((item, i) => (
+            {t.pricing.included.map((item, i) => (
               <motion.li
                 key={item}
                 initial={{ opacity: 0, x: 12 }}

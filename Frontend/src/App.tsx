@@ -12,6 +12,7 @@ import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import SocialCTA from "./components/SocialCTA";
 import Footer from "./components/Footer";
+import MiniFooter from "./components/MiniFooter";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
         <SocialCTA />
       </main>
       <Footer />
+      <MiniFooter />
       <FloatingWhatsApp />
     </>
   );

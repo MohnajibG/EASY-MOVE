@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, PhoneCall } from "lucide-react";
 import stressSolution from "../assets/brand-pillars.jpg";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -8,6 +9,8 @@ const fadeUp = {
 };
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="accueil"
@@ -45,7 +48,7 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium text-brand-cyan"
           >
-            <MapPin className="h-4 w-4" /> Partout en Algérie
+            <MapPin className="h-4 w-4" /> {t.hero.badge}
           </motion.span>
 
           <motion.h1
@@ -53,9 +56,9 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="mt-6 text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Votre déménagement,{" "}
+            {t.hero.titlePart1}{" "}
             <span className="bg-linear-to-r from-brand-cyan to-brand-green bg-clip-text text-transparent">
-              en toute facilité
+              {t.hero.titleHighlight}
             </span>
           </motion.h1>
 
@@ -64,8 +67,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="mt-6 max-w-lg text-lg text-white/60"
           >
-            Équipe professionnelle, transport sécurisé et emballage soigné.
-            Votre bien, notre priorité — où que vous alliez en Algérie.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -79,17 +81,17 @@ const Hero = () => {
               href="#devis"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-black"
             >
-              Obtenir un devis gratuit
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {t.hero.ctaPrimary}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              href="tel:0778637433"
+              href="tel:+213778637433"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10"
             >
               <PhoneCall className="h-4 w-4" />
-              07 78 63 74 33
+              <span dir="ltr">07 78 63 74 33</span>
             </motion.a>
           </motion.div>
         </motion.div>
@@ -105,7 +107,7 @@ const Hero = () => {
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             src={stressSolution}
-            alt="Déménager c'est stressant, la solution avec Easy Move"
+            alt={t.hero.imgAlt}
             className="w-full rounded-4xl shadow-2xl shadow-black ring-1 ring-white/10"
           />
         </motion.div>

@@ -1,12 +1,8 @@
 import { motion } from "framer-motion";
 import { BadgeCheck, CalendarClock, MapPinned, Timer } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const badges = [
-  { icon: Timer, label: "Devis en 2 minutes" },
-  { icon: BadgeCheck, label: "Prix fixe garanti" },
-  { icon: CalendarClock, label: "Disponible 7j/7" },
-  { icon: MapPinned, label: "Partout en Algérie" },
-];
+const icons = [Timer, BadgeCheck, CalendarClock, MapPinned];
 
 const container = {
   hidden: {},
@@ -25,6 +21,8 @@ const item = {
 };
 
 const TrustBar = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative bg-black px-5 pb-20 lg:px-8">
       <motion.div
@@ -34,7 +32,9 @@ const TrustBar = () => {
         viewport={{ once: true, amount: 0.4 }}
         className="mx-auto grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-4"
       >
-        {badges.map(({ icon: Icon, label }) => (
+        {t.trustbar.items.map((label, i) => {
+          const Icon = icons[i];
+          return (
           <motion.div
             key={label}
             variants={item}
@@ -47,7 +47,8 @@ const TrustBar = () => {
               {label}
             </span>
           </motion.div>
-        ))}
+          );
+        })}
       </motion.div>
     </section>
   );

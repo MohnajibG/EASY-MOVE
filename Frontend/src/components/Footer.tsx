@@ -3,6 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import type { SVGProps } from "react";
 import logo from "../assets/logo-mark.png";
 import { FACEBOOK_URL, INSTAGRAM_URL, WHATSAPP_URL } from "../constants/social";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
@@ -24,15 +25,17 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const links = [
-  { href: "#services", label: "Services" },
-  { href: "#tarifs", label: "Tarifs" },
-  { href: "#stockage", label: "Stockage" },
-  { href: "#emballage", label: "Emballage" },
-  { href: "#faq", label: "FAQ" },
-];
-
 const Footer = () => {
+  const { t } = useLanguage();
+
+  const links = [
+    { href: "#services", label: t.nav.services },
+    { href: "#tarifs", label: t.nav.tarifs },
+    { href: "#stockage", label: t.nav.stockage },
+    { href: "#emballage", label: t.nav.emballage },
+    { href: "#faq", label: t.nav.faq },
+  ];
+
   return (
     <footer id="contact" className="bg-black pt-20 pb-10">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -50,13 +53,12 @@ const Footer = () => {
               </span>
             </a>
             <p className="mt-4 max-w-xs text-sm text-white/50">
-              Votre bien, notre priorité. Déménagement résidentiel,
-              professionnel et longue distance, partout en Algérie.
+              {t.footer.tagline}
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Navigation</h3>
+            <h3 className="text-sm font-semibold text-white">{t.footer.navTitle}</h3>
             <ul className="mt-4 space-y-3">
               {links.map((link) => (
                 <li key={link.href}>
@@ -72,15 +74,15 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Contact</h3>
+            <h3 className="text-sm font-semibold text-white">{t.footer.contactTitle}</h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  href="tel:0778637433"
+                  href="tel:+213778637433"
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-brand-cyan"
                 >
                   <Phone className="h-4 w-4" />
-                  07 78 63 74 33
+                  <span dir="ltr">07 78 63 74 33</span>
                 </a>
               </li>
               <li>
@@ -91,18 +93,18 @@ const Footer = () => {
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-brand-cyan"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp
+                  {t.footer.whatsapp}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-white/50">
                 <MapPin className="h-4 w-4" />
-                Alger, Algérie
+                {t.footer.city}
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Suivez-nous</h3>
+            <h3 className="text-sm font-semibold text-white">{t.footer.followTitle}</h3>
             <div className="mt-4 flex gap-3">
               <a
                 href={INSTAGRAM_URL}
@@ -137,13 +139,13 @@ const Footer = () => {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Easy Move. Tous droits réservés.
+            © {new Date().getFullYear()} Easy Move. {t.footer.rights}
           </p>
           <a
             href="#accueil"
             className="rounded-full bg-white/5 px-5 py-2 text-xs font-semibold text-white/60 transition-colors hover:bg-brand-blue hover:text-white"
           >
-            Devis gratuit
+            {t.footer.devisBtn}
           </a>
         </div>
       </div>

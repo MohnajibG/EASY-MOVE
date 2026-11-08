@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { SVGProps } from "react";
 import { WHATSAPP_URL } from "../constants/social";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -9,18 +10,20 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const FloatingWhatsApp = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Discuter sur WhatsApp"
+      aria-label={t.footer.whatsappChatAria}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1, duration: 0.4, type: "spring", stiffness: 260 }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed right-5 bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-black shadow-xl shadow-black/30 sm:right-7 sm:bottom-7"
+      className="fixed end-5 bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-black shadow-xl shadow-black/30 sm:end-7 sm:bottom-7"
     >
       <motion.span
         animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { SVGProps } from "react";
 import { INSTAGRAM_URL } from "../constants/social";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
@@ -11,6 +12,8 @@ const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const SocialCTA = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden bg-linear-to-r from-brand-green to-brand-cyan py-16">
       <motion.div
@@ -28,11 +31,10 @@ const SocialCTA = () => {
           <InstagramIcon className="h-6 w-6" />
         </motion.span>
         <h2 className="text-2xl font-extrabold tracking-tight text-black sm:text-3xl">
-          Suivez notre camion sur les réseaux
+          {t.socialCTA.title}
         </h2>
         <p className="max-w-lg text-sm text-black/70 sm:text-base">
-          Coulisses de nos déménagements, astuces d'emballage et bons plans :
-          rejoignez la communauté Easy Move.
+          {t.socialCTA.subtitle}
         </p>
         <a
           href={INSTAGRAM_URL}
@@ -40,7 +42,7 @@ const SocialCTA = () => {
           rel="noopener noreferrer"
           className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
         >
-          Nous suivre
+          {t.socialCTA.cta}
         </a>
       </motion.div>
     </section>
