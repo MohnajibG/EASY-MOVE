@@ -9,7 +9,7 @@ export const languages: { code: Lang; label: string; dir: "ltr" | "rtl" }[] = [
 export const dict = {
   fr: {
     meta: {
-      title: "Easy Move — Déménagement en toute facilité",
+      title: "Easy Move Déménagement en toute facilité",
       description:
         "Easy Move - Déménagement résidentiel, professionnel et longue distance partout en Algérie. Devis gratuit, prix fixe garanti.",
     },
@@ -27,7 +27,7 @@ export const dict = {
       titlePart1: "Votre déménagement,",
       titleHighlight: "en toute facilité",
       subtitle:
-        "Équipe professionnelle, transport sécurisé et emballage soigné. Votre bien, notre priorité — où que vous alliez en Algérie.",
+        "Équipe professionnelle, transport sécurisé et emballage soigné. Votre bien, notre priorité où que vous alliez en Algérie.",
       ctaPrimary: "Obtenir un devis gratuit",
       imgAlt: "Déménager c'est stressant, la solution avec Easy Move",
     },
@@ -42,14 +42,33 @@ export const dict = {
     services: {
       eyebrow: "Nos services",
       title: "Tout ce qu'il faut pour déménager l'esprit tranquille",
-      subtitle: "Quel que soit votre besoin, notre équipe s'occupe de tout, de A à Z.",
+      subtitle:
+        "Quel que soit votre besoin, notre équipe s'occupe de tout, de A à Z.",
       items: [
-        { title: "Déménagement résidentiel", desc: "Appartement ou maison, nous prenons soin de chaque meuble et carton du départ à l'arrivée." },
-        { title: "Bureaux & entreprises", desc: "Déménagement professionnel organisé pour limiter l'arrêt de votre activité." },
-        { title: "Longue distance", desc: "D'une wilaya à l'autre, votre déménagement est planifié et suivi de bout en bout." },
-        { title: "Petits déménagements", desc: "Studio, quelques meubles ou objets volumineux : un service adapté, sans minimum." },
-        { title: "Service rapide", desc: "Besoin de déménager vite ? Nous nous organisons pour intervenir dans les meilleurs délais." },
-        { title: "Transport sécurisé", desc: "Véhicules équipés et équipe formée pour un transport sans dommage." },
+        {
+          title: "Déménagement résidentiel",
+          desc: "Appartement ou maison, nous prenons soin de chaque meuble et carton du départ à l'arrivée.",
+        },
+        {
+          title: "Bureaux & entreprises",
+          desc: "Déménagement professionnel organisé pour limiter l'arrêt de votre activité.",
+        },
+        {
+          title: "Longue distance",
+          desc: "D'une wilaya à l'autre, votre déménagement est planifié et suivi de bout en bout.",
+        },
+        {
+          title: "Petits déménagements",
+          desc: "Studio, quelques meubles ou objets volumineux : un service adapté, sans minimum.",
+        },
+        {
+          title: "Service rapide",
+          desc: "Besoin de déménager vite ? Nous nous organisons pour intervenir dans les meilleurs délais.",
+        },
+        {
+          title: "Transport sécurisé",
+          desc: "Véhicules équipés et équipe formée pour un transport sans dommage.",
+        },
       ],
     },
     whyUs: {
@@ -57,16 +76,29 @@ export const dict = {
       title: "Le déménagement, sans le stress",
       subtitle: "Déménager, c'est stressant. Avec Easy Move, ça ne l'est plus.",
       pillars: [
-        { title: "Équipe professionnelle", desc: "Des déménageurs formés et expérimentés, qui traitent vos biens comme les leurs." },
-        { title: "Transport sécurisé", desc: "Véhicules adaptés et arrimage soigné pour un trajet sans accroc." },
-        { title: "Emballage & manutention", desc: "Matériel professionnel et gestes précis pour chaque objet, fragile ou non." },
-        { title: "Votre bien, notre priorité", desc: "Partout en Algérie, on s'engage sur un service soigné du premier au dernier carton." },
+        {
+          title: "Équipe professionnelle",
+          desc: "Des déménageurs formés et expérimentés, qui traitent vos biens comme les leurs.",
+        },
+        {
+          title: "Transport sécurisé",
+          desc: "Véhicules adaptés et arrimage soigné pour un trajet sans accroc.",
+        },
+        {
+          title: "Emballage & manutention",
+          desc: "Matériel professionnel et gestes précis pour chaque objet, fragile ou non.",
+        },
+        {
+          title: "Votre bien, notre priorité",
+          desc: "Partout en Algérie, on s'engage sur un service soigné du premier au dernier carton.",
+        },
       ],
     },
     pricing: {
       eyebrow: "Tarification",
       title: "Un prix fixe, sans surprise",
-      subtitle: "Nous vous donnons un tarif garanti avant le jour de votre déménagement. La durée du chargement ne change rien au prix annoncé.",
+      subtitle:
+        "Nous vous donnons un tarif garanti avant le jour de votre déménagement. La durée du chargement ne change rien au prix annoncé.",
       cta: "Demander mon prix fixe",
       includedTitle: "Toujours inclus dans votre devis",
       included: [
@@ -80,18 +112,29 @@ export const dict = {
     storage: {
       eyebrow: "Stockage",
       title: "Besoin de place ? Stockez en toute sérénité",
-      subtitle: "Entre deux logements ou pour désencombrer, nous récupérons vos biens à domicile et les stockons en lieu sûr aussi longtemps que nécessaire.",
+      subtitle:
+        "Entre deux logements ou pour désencombrer, nous récupérons vos biens à domicile et les stockons en lieu sûr aussi longtemps que nécessaire.",
       cta: "Demander un devis stockage",
       points: [
-        { title: "Garde-meuble sécurisé", desc: "Vos affaires sont stockées dans un espace surveillé, à l'abri de l'humidité." },
-        { title: "Courte ou longue durée", desc: "Quelques jours ou plusieurs mois, vous gardez le contrôle sur la durée." },
-        { title: "Récupération flexible", desc: "Nous venons chercher et livrons vos biens au moment qui vous arrange." },
+        {
+          title: "Garde-meuble sécurisé",
+          desc: "Vos affaires sont stockées dans un espace surveillé, à l'abri de l'humidité.",
+        },
+        {
+          title: "Courte ou longue durée",
+          desc: "Quelques jours ou plusieurs mois, vous gardez le contrôle sur la durée.",
+        },
+        {
+          title: "Récupération flexible",
+          desc: "Nous venons chercher et livrons vos biens au moment qui vous arrange.",
+        },
       ],
     },
     packing: {
       eyebrow: "Emballage",
       title: "On emballe, vous n'avez rien à faire",
-      subtitle: "Matériel professionnel et méthode adaptée à chaque objet. Voici ce que nous emballons avec le plus grand soin :",
+      subtitle:
+        "Matériel professionnel et méthode adaptée à chaque objet. Voici ce que nous emballons avec le plus grand soin :",
       items: [
         "Télévisions et écrans plats",
         "Miroirs et vitres",
@@ -118,20 +161,37 @@ export const dict = {
       eyebrow: "Questions fréquentes",
       title: "Tout ce que vous devez savoir",
       items: [
-        { q: "Combien coûte un déménagement avec Easy Move ?", a: "Le prix dépend du volume, de la distance et du type de déménagement. Remplissez le formulaire de devis pour recevoir un tarif fixe et gratuit sous peu." },
-        { q: "Dans quelles villes intervenez-vous ?", a: "Nous intervenons à Alger et dans toute l'Algérie, y compris pour les déménagements longue distance entre wilayas." },
-        { q: "Fournissez-vous les cartons et le matériel d'emballage ?", a: "Oui, notre équipe apporte tout le matériel nécessaire : cartons, housses, film plastique et protections pour meubles." },
-        { q: "Le prix peut-il changer le jour du déménagement ?", a: "Non. Une fois votre devis validé, le prix est fixe et ne change pas, même si le chargement prend plus de temps que prévu." },
-        { q: "Proposez-vous un service de stockage ?", a: "Oui, nous proposons une solution de stockage sécurisé à court ou long terme, avec récupération et livraison à votre convenance." },
+        {
+          q: "Combien coûte un déménagement avec Easy Move ?",
+          a: "Le prix dépend du volume, de la distance et du type de déménagement. Remplissez le formulaire de devis pour recevoir un tarif fixe et gratuit sous peu.",
+        },
+        {
+          q: "Dans quelles villes intervenez-vous ?",
+          a: "Nous intervenons à Alger et dans toute l'Algérie, y compris pour les déménagements longue distance entre wilayas.",
+        },
+        {
+          q: "Fournissez-vous les cartons et le matériel d'emballage ?",
+          a: "Oui, notre équipe apporte tout le matériel nécessaire : cartons, housses, film plastique et protections pour meubles.",
+        },
+        {
+          q: "Le prix peut-il changer le jour du déménagement ?",
+          a: "Non. Une fois votre devis validé, le prix est fixe et ne change pas, même si le chargement prend plus de temps que prévu.",
+        },
+        {
+          q: "Proposez-vous un service de stockage ?",
+          a: "Oui, nous proposons une solution de stockage sécurisé à court ou long terme, avec récupération et livraison à votre convenance.",
+        },
       ],
     },
     socialCTA: {
       title: "Suivez notre camion sur les réseaux",
-      subtitle: "Coulisses de nos déménagements, astuces d'emballage et bons plans : rejoignez la communauté Easy Move.",
+      subtitle:
+        "Coulisses de nos déménagements, astuces d'emballage et bons plans : rejoignez la communauté Easy Move.",
       cta: "Nous suivre",
     },
     footer: {
-      tagline: "Votre bien, notre priorité. Déménagement résidentiel, professionnel et longue distance, partout en Algérie.",
+      tagline:
+        "Votre bien, notre priorité. Déménagement résidentiel, professionnel et longue distance, partout en Algérie.",
       navTitle: "Navigation",
       contactTitle: "Contact",
       followTitle: "Suivez-nous",
@@ -155,15 +215,37 @@ export const dict = {
       addressPlaceholder: "Ville, quartier, rue...",
       floorLabel: "Étage *",
       floorPlaceholder: "Choisir un étage",
-      floors: ["Rez-de-chaussée", "1er étage", "2e étage", "3e étage", "4e étage", "5e étage", "6e étage", "7e étage", "8e étage", "9e étage", "10e étage ou +"],
+      floors: [
+        "Rez-de-chaussée",
+        "1er étage",
+        "2e étage",
+        "3e étage",
+        "4e étage",
+        "5e étage",
+        "6e étage",
+        "7e étage",
+        "8e étage",
+        "9e étage",
+        "10e étage ou +",
+      ],
       elevatorLabel: "Ascenseur disponible ?",
       yes: "oui",
       no: "non",
       step2Title: "Qu'y a-t-il à déménager ?",
       bienTypeLabel: "Type de bien *",
-      bienTypes: ["Studio / F1", "F2", "F3", "F4", "F5 et +", "Maison", "Bureau", "Autre"],
+      bienTypes: [
+        "Studio / F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5 et +",
+        "Maison",
+        "Bureau",
+        "Autre",
+      ],
       descLabel: "Décrivez ce qu'il faut déménager",
-      descPlaceholder: "Ex : salon complet, 2 chambres, électroménager, pas d'objets fragiles particuliers...",
+      descPlaceholder:
+        "Ex : salon complet, 2 chambres, électroménager, pas d'objets fragiles particuliers...",
       photosLabel: "Photos pour estimer le volume (optionnel)",
       dropzoneText: "Glissez vos photos ici ou",
       browseText: "parcourir",
@@ -190,7 +272,7 @@ export const dict = {
   },
   en: {
     meta: {
-      title: "Easy Move — Moving made effortless",
+      title: "Easy Move Moving made effortless",
       description:
         "Easy Move - Residential, professional and long-distance moving all over Algeria. Free quote, guaranteed fixed price.",
     },
@@ -208,9 +290,9 @@ export const dict = {
       titlePart1: "Your move,",
       titleHighlight: "made effortless",
       subtitle:
-        "Professional crew, secure transport and careful packing. Your belongings, our priority — wherever you're headed in Algeria.",
+        "Professional crew, secure transport and careful packing. Your belongings, our priority wherever you're headed in Algeria.",
       ctaPrimary: "Get a free quote",
-      imgAlt: "Moving is stressful — the Easy Move solution",
+      imgAlt: "Moving is stressful the Easy Move solution",
     },
     trustbar: {
       items: [
@@ -225,12 +307,30 @@ export const dict = {
       title: "Everything you need for a stress-free move",
       subtitle: "Whatever you need, our team handles everything from A to Z.",
       items: [
-        { title: "Residential moving", desc: "Apartment or house, we take care of every piece of furniture and box from pickup to delivery." },
-        { title: "Offices & businesses", desc: "Professional relocation organized to minimize downtime for your business." },
-        { title: "Long distance", desc: "From one wilaya to another, your move is planned and tracked from start to finish." },
-        { title: "Small moves", desc: "Studio, a few pieces of furniture, or bulky items: a tailored service, no minimum." },
-        { title: "Fast service", desc: "Need to move fast? We organize ourselves to step in as quickly as possible." },
-        { title: "Secure transport", desc: "Equipped vehicles and a trained team for damage-free transport." },
+        {
+          title: "Residential moving",
+          desc: "Apartment or house, we take care of every piece of furniture and box from pickup to delivery.",
+        },
+        {
+          title: "Offices & businesses",
+          desc: "Professional relocation organized to minimize downtime for your business.",
+        },
+        {
+          title: "Long distance",
+          desc: "From one wilaya to another, your move is planned and tracked from start to finish.",
+        },
+        {
+          title: "Small moves",
+          desc: "Studio, a few pieces of furniture, or bulky items: a tailored service, no minimum.",
+        },
+        {
+          title: "Fast service",
+          desc: "Need to move fast? We organize ourselves to step in as quickly as possible.",
+        },
+        {
+          title: "Secure transport",
+          desc: "Equipped vehicles and a trained team for damage-free transport.",
+        },
       ],
     },
     whyUs: {
@@ -238,16 +338,29 @@ export const dict = {
       title: "Moving, without the stress",
       subtitle: "Moving is stressful. With Easy Move, it no longer is.",
       pillars: [
-        { title: "Professional team", desc: "Trained, experienced movers who treat your belongings as their own." },
-        { title: "Secure transport", desc: "Suitable vehicles and careful strapping for a smooth journey." },
-        { title: "Packing & handling", desc: "Professional materials and precise handling for every item, fragile or not." },
-        { title: "Your belongings, our priority", desc: "All over Algeria, we commit to careful service from the first box to the last." },
+        {
+          title: "Professional team",
+          desc: "Trained, experienced movers who treat your belongings as their own.",
+        },
+        {
+          title: "Secure transport",
+          desc: "Suitable vehicles and careful strapping for a smooth journey.",
+        },
+        {
+          title: "Packing & handling",
+          desc: "Professional materials and precise handling for every item, fragile or not.",
+        },
+        {
+          title: "Your belongings, our priority",
+          desc: "All over Algeria, we commit to careful service from the first box to the last.",
+        },
       ],
     },
     pricing: {
       eyebrow: "Pricing",
       title: "A fixed price, no surprises",
-      subtitle: "We give you a guaranteed rate before moving day. How long loading takes won't change the price quoted.",
+      subtitle:
+        "We give you a guaranteed rate before moving day. How long loading takes won't change the price quoted.",
       cta: "Get my fixed price",
       includedTitle: "Always included in your quote",
       included: [
@@ -261,18 +374,29 @@ export const dict = {
     storage: {
       eyebrow: "Storage",
       title: "Need space? Store with peace of mind",
-      subtitle: "Between homes or to declutter, we pick up your belongings at home and store them safely for as long as needed.",
+      subtitle:
+        "Between homes or to declutter, we pick up your belongings at home and store them safely for as long as needed.",
       cta: "Request a storage quote",
       points: [
-        { title: "Secure storage unit", desc: "Your belongings are stored in a monitored space, safe from humidity." },
-        { title: "Short or long term", desc: "A few days or several months — you stay in control of the duration." },
-        { title: "Flexible pickup", desc: "We pick up and deliver your belongings whenever suits you." },
+        {
+          title: "Secure storage unit",
+          desc: "Your belongings are stored in a monitored space, safe from humidity.",
+        },
+        {
+          title: "Short or long term",
+          desc: "A few days or several months you stay in control of the duration.",
+        },
+        {
+          title: "Flexible pickup",
+          desc: "We pick up and deliver your belongings whenever suits you.",
+        },
       ],
     },
     packing: {
       eyebrow: "Packing",
       title: "We pack, you do nothing",
-      subtitle: "Professional materials and a method suited to every item. Here's what we pack with the greatest care:",
+      subtitle:
+        "Professional materials and a method suited to every item. Here's what we pack with the greatest care:",
       items: [
         "TVs and flat screens",
         "Mirrors and glass",
@@ -299,20 +423,37 @@ export const dict = {
       eyebrow: "Frequently asked questions",
       title: "Everything you need to know",
       items: [
-        { q: "How much does a move with Easy Move cost?", a: "The price depends on volume, distance and type of move. Fill in the quote form to receive a free, fixed price shortly." },
-        { q: "Which cities do you cover?", a: "We operate in Algiers and all over Algeria, including long-distance moves between wilayas." },
-        { q: "Do you provide boxes and packing materials?", a: "Yes, our team brings all the necessary materials: boxes, covers, plastic wrap and furniture protection." },
-        { q: "Can the price change on moving day?", a: "No. Once your quote is confirmed, the price is fixed and won't change, even if loading takes longer than planned." },
-        { q: "Do you offer a storage service?", a: "Yes, we offer secure short- or long-term storage, with pickup and delivery at your convenience." },
+        {
+          q: "How much does a move with Easy Move cost?",
+          a: "The price depends on volume, distance and type of move. Fill in the quote form to receive a free, fixed price shortly.",
+        },
+        {
+          q: "Which cities do you cover?",
+          a: "We operate in Algiers and all over Algeria, including long-distance moves between wilayas.",
+        },
+        {
+          q: "Do you provide boxes and packing materials?",
+          a: "Yes, our team brings all the necessary materials: boxes, covers, plastic wrap and furniture protection.",
+        },
+        {
+          q: "Can the price change on moving day?",
+          a: "No. Once your quote is confirmed, the price is fixed and won't change, even if loading takes longer than planned.",
+        },
+        {
+          q: "Do you offer a storage service?",
+          a: "Yes, we offer secure short- or long-term storage, with pickup and delivery at your convenience.",
+        },
       ],
     },
     socialCTA: {
       title: "Follow our truck on social media",
-      subtitle: "Behind the scenes of our moves, packing tips and good deals: join the Easy Move community.",
+      subtitle:
+        "Behind the scenes of our moves, packing tips and good deals: join the Easy Move community.",
       cta: "Follow us",
     },
     footer: {
-      tagline: "Your belongings, our priority. Residential, professional and long-distance moving, all over Algeria.",
+      tagline:
+        "Your belongings, our priority. Residential, professional and long-distance moving, all over Algeria.",
       navTitle: "Navigation",
       contactTitle: "Contact",
       followTitle: "Follow us",
@@ -336,15 +477,37 @@ export const dict = {
       addressPlaceholder: "City, district, street...",
       floorLabel: "Floor *",
       floorPlaceholder: "Choose a floor",
-      floors: ["Ground floor", "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8", "Floor 9", "Floor 10 or more"],
+      floors: [
+        "Ground floor",
+        "Floor 1",
+        "Floor 2",
+        "Floor 3",
+        "Floor 4",
+        "Floor 5",
+        "Floor 6",
+        "Floor 7",
+        "Floor 8",
+        "Floor 9",
+        "Floor 10 or more",
+      ],
       elevatorLabel: "Elevator available?",
       yes: "yes",
       no: "no",
       step2Title: "What needs to be moved?",
       bienTypeLabel: "Property type *",
-      bienTypes: ["Studio / 1-bed", "2-bed", "3-bed", "4-bed", "5-bed +", "House", "Office", "Other"],
+      bienTypes: [
+        "Studio / 1-bed",
+        "2-bed",
+        "3-bed",
+        "4-bed",
+        "5-bed +",
+        "House",
+        "Office",
+        "Other",
+      ],
       descLabel: "Describe what needs to be moved",
-      descPlaceholder: "E.g.: full living room, 2 bedrooms, appliances, nothing particularly fragile...",
+      descPlaceholder:
+        "E.g.: full living room, 2 bedrooms, appliances, nothing particularly fragile...",
       photosLabel: "Photos to estimate volume (optional)",
       dropzoneText: "Drag your photos here or",
       browseText: "browse",
@@ -371,7 +534,7 @@ export const dict = {
   },
   ar: {
     meta: {
-      title: "Easy Move — انتقال بكل سهولة",
+      title: "Easy Move انتقال بكل سهولة",
       description:
         "Easy Move - خدمات نقل الأثاث السكني والمهني ولمسافات طويلة في جميع أنحاء الجزائر. عرض سعر مجاني وسعر ثابت مضمون.",
     },
@@ -406,12 +569,30 @@ export const dict = {
       title: "كل ما تحتاجه للانتقال بكل راحة بال",
       subtitle: "مهما كانت احتياجاتك، فريقنا يتكفل بكل شيء من الألف إلى الياء.",
       items: [
-        { title: "انتقال سكني", desc: "شقة أو منزل، نعتني بكل قطعة أثاث وكل صندوق من الانطلاق إلى الوصول." },
-        { title: "المكاتب والشركات", desc: "انتقال احترافي منظم للحد من توقف نشاطك." },
-        { title: "الانتقال لمسافات طويلة", desc: "من ولاية إلى أخرى، يتم التخطيط لانتقالك ومتابعته من البداية إلى النهاية." },
-        { title: "الانتقالات الصغيرة", desc: "استوديو، بعض الأثاث أو أغراض كبيرة: خدمة مناسبة بدون حد أدنى." },
-        { title: "خدمة سريعة", desc: "تحتاج الانتقال بسرعة؟ ننظم أنفسنا للتدخل في أقرب وقت ممكن." },
-        { title: "نقل آمن", desc: "مركبات مجهزة وفريق مدرب لنقل آمن بدون أضرار." },
+        {
+          title: "انتقال سكني",
+          desc: "شقة أو منزل، نعتني بكل قطعة أثاث وكل صندوق من الانطلاق إلى الوصول.",
+        },
+        {
+          title: "المكاتب والشركات",
+          desc: "انتقال احترافي منظم للحد من توقف نشاطك.",
+        },
+        {
+          title: "الانتقال لمسافات طويلة",
+          desc: "من ولاية إلى أخرى، يتم التخطيط لانتقالك ومتابعته من البداية إلى النهاية.",
+        },
+        {
+          title: "الانتقالات الصغيرة",
+          desc: "استوديو، بعض الأثاث أو أغراض كبيرة: خدمة مناسبة بدون حد أدنى.",
+        },
+        {
+          title: "خدمة سريعة",
+          desc: "تحتاج الانتقال بسرعة؟ ننظم أنفسنا للتدخل في أقرب وقت ممكن.",
+        },
+        {
+          title: "نقل آمن",
+          desc: "مركبات مجهزة وفريق مدرب لنقل آمن بدون أضرار.",
+        },
       ],
     },
     whyUs: {
@@ -419,16 +600,26 @@ export const dict = {
       title: "الانتقال، بدون توتر",
       subtitle: "الانتقال أمر متعب. مع Easy Move، لم يعد كذلك.",
       pillars: [
-        { title: "فريق محترف", desc: "عمال نقل مدربون وذوو خبرة، يتعاملون مع ممتلكاتك كما لو كانت ممتلكاتهم." },
+        {
+          title: "فريق محترف",
+          desc: "عمال نقل مدربون وذوو خبرة، يتعاملون مع ممتلكاتك كما لو كانت ممتلكاتهم.",
+        },
         { title: "نقل آمن", desc: "مركبات مناسبة وتثبيت دقيق لرحلة سلسة." },
-        { title: "التغليف والمناولة", desc: "مواد احترافية وحركات دقيقة لكل غرض، سواء كان هشًا أم لا." },
-        { title: "ممتلكاتك أولويتنا", desc: "في جميع أنحاء الجزائر، نلتزم بخدمة متقنة من أول صندوق إلى آخره." },
+        {
+          title: "التغليف والمناولة",
+          desc: "مواد احترافية وحركات دقيقة لكل غرض، سواء كان هشًا أم لا.",
+        },
+        {
+          title: "ممتلكاتك أولويتنا",
+          desc: "في جميع أنحاء الجزائر، نلتزم بخدمة متقنة من أول صندوق إلى آخره.",
+        },
       ],
     },
     pricing: {
       eyebrow: "التسعير",
       title: "سعر ثابت، بدون مفاجآت",
-      subtitle: "نمنحك سعرًا مضمونًا قبل يوم الانتقال. مدة التحميل لا تغيّر السعر المعلن.",
+      subtitle:
+        "نمنحك سعرًا مضمونًا قبل يوم الانتقال. مدة التحميل لا تغيّر السعر المعلن.",
       cta: "اطلب سعري الثابت",
       includedTitle: "مشمول دائمًا في عرض السعر",
       included: [
@@ -442,18 +633,29 @@ export const dict = {
     storage: {
       eyebrow: "التخزين",
       title: "تحتاج إلى مساحة؟ خزّن بكل أمان",
-      subtitle: "بين سكنين أو لتفريغ مساحتك، نستلم أغراضك من منزلك ونخزنها في مكان آمن طوال المدة التي تحتاجها.",
+      subtitle:
+        "بين سكنين أو لتفريغ مساحتك، نستلم أغراضك من منزلك ونخزنها في مكان آمن طوال المدة التي تحتاجها.",
       cta: "اطلب عرض سعر للتخزين",
       points: [
-        { title: "مستودع تخزين آمن", desc: "تُخزَّن أغراضك في مكان مراقب وبمنأى عن الرطوبة." },
-        { title: "قصير أو طويل المدى", desc: "بضعة أيام أو عدة أشهر، تبقى المدة بين يديك." },
-        { title: "استرجاع مرن", desc: "نأتي لاسترجاع أغراضك وتسليمها في الوقت الذي يناسبك." },
+        {
+          title: "مستودع تخزين آمن",
+          desc: "تُخزَّن أغراضك في مكان مراقب وبمنأى عن الرطوبة.",
+        },
+        {
+          title: "قصير أو طويل المدى",
+          desc: "بضعة أيام أو عدة أشهر، تبقى المدة بين يديك.",
+        },
+        {
+          title: "استرجاع مرن",
+          desc: "نأتي لاسترجاع أغراضك وتسليمها في الوقت الذي يناسبك.",
+        },
       ],
     },
     packing: {
       eyebrow: "التغليف",
       title: "نحن نغلّف، أنت لا تفعل شيئًا",
-      subtitle: "مواد احترافية وطريقة مناسبة لكل غرض. إليك ما نغلّفه بأقصى عناية:",
+      subtitle:
+        "مواد احترافية وطريقة مناسبة لكل غرض. إليك ما نغلّفه بأقصى عناية:",
       items: [
         "أجهزة التلفاز والشاشات المسطحة",
         "المرايا والزجاج",
@@ -480,20 +682,37 @@ export const dict = {
       eyebrow: "الأسئلة الشائعة",
       title: "كل ما تحتاج معرفته",
       items: [
-        { q: "كم تكلفة الانتقال مع Easy Move؟", a: "يعتمد السعر على الحجم والمسافة ونوع الانتقال. املأ استمارة طلب عرض السعر لتصلك قريبًا تسعيرة ثابتة ومجانية." },
-        { q: "في أي المدن تعملون؟", a: "نعمل في الجزائر العاصمة وفي جميع أنحاء الجزائر، بما في ذلك الانتقالات لمسافات طويلة بين الولايات." },
-        { q: "هل توفرون الصناديق ومواد التغليف؟", a: "نعم، يحضر فريقنا كل المواد اللازمة: الصناديق، الأغطية، الفيلم البلاستيكي وحماية الأثاث." },
-        { q: "هل يمكن أن يتغير السعر يوم الانتقال؟", a: "لا. بمجرد تأكيد عرض السعر، يبقى السعر ثابتًا ولا يتغير، حتى لو استغرق التحميل وقتًا أطول من المتوقع." },
-        { q: "هل تقدمون خدمة التخزين؟", a: "نعم، نقدم حلاً آمنًا للتخزين على المدى القصير أو الطويل، مع الاسترجاع والتسليم في الوقت الذي يناسبك." },
+        {
+          q: "كم تكلفة الانتقال مع Easy Move؟",
+          a: "يعتمد السعر على الحجم والمسافة ونوع الانتقال. املأ استمارة طلب عرض السعر لتصلك قريبًا تسعيرة ثابتة ومجانية.",
+        },
+        {
+          q: "في أي المدن تعملون؟",
+          a: "نعمل في الجزائر العاصمة وفي جميع أنحاء الجزائر، بما في ذلك الانتقالات لمسافات طويلة بين الولايات.",
+        },
+        {
+          q: "هل توفرون الصناديق ومواد التغليف؟",
+          a: "نعم، يحضر فريقنا كل المواد اللازمة: الصناديق، الأغطية، الفيلم البلاستيكي وحماية الأثاث.",
+        },
+        {
+          q: "هل يمكن أن يتغير السعر يوم الانتقال؟",
+          a: "لا. بمجرد تأكيد عرض السعر، يبقى السعر ثابتًا ولا يتغير، حتى لو استغرق التحميل وقتًا أطول من المتوقع.",
+        },
+        {
+          q: "هل تقدمون خدمة التخزين؟",
+          a: "نعم، نقدم حلاً آمنًا للتخزين على المدى القصير أو الطويل، مع الاسترجاع والتسليم في الوقت الذي يناسبك.",
+        },
       ],
     },
     socialCTA: {
       title: "تابع شاحنتنا على مواقع التواصل",
-      subtitle: "كواليس عمليات انتقالنا، نصائح التغليف والعروض المميزة: انضم إلى مجتمع Easy Move.",
+      subtitle:
+        "كواليس عمليات انتقالنا، نصائح التغليف والعروض المميزة: انضم إلى مجتمع Easy Move.",
       cta: "تابعنا",
     },
     footer: {
-      tagline: "ممتلكاتك أولويتنا. انتقال سكني ومهني ولمسافات طويلة، في جميع أنحاء الجزائر.",
+      tagline:
+        "ممتلكاتك أولويتنا. انتقال سكني ومهني ولمسافات طويلة، في جميع أنحاء الجزائر.",
       navTitle: "التصفح",
       contactTitle: "اتصل بنا",
       followTitle: "تابعنا",
@@ -517,15 +736,37 @@ export const dict = {
       addressPlaceholder: "المدينة، الحي، الشارع...",
       floorLabel: "الطابق *",
       floorPlaceholder: "اختر الطابق",
-      floors: ["الطابق الأرضي", "الطابق 1", "الطابق 2", "الطابق 3", "الطابق 4", "الطابق 5", "الطابق 6", "الطابق 7", "الطابق 8", "الطابق 9", "الطابق 10 أو أكثر"],
+      floors: [
+        "الطابق الأرضي",
+        "الطابق 1",
+        "الطابق 2",
+        "الطابق 3",
+        "الطابق 4",
+        "الطابق 5",
+        "الطابق 6",
+        "الطابق 7",
+        "الطابق 8",
+        "الطابق 9",
+        "الطابق 10 أو أكثر",
+      ],
       elevatorLabel: "هل يوجد مصعد؟",
       yes: "نعم",
       no: "لا",
       step2Title: "ما الذي سيتم نقله؟",
       bienTypeLabel: "نوع العقار *",
-      bienTypes: ["استوديو / غرفة واحدة", "غرفتان", "3 غرف", "4 غرف", "5 غرف فأكثر", "منزل", "مكتب", "أخرى"],
+      bienTypes: [
+        "استوديو / غرفة واحدة",
+        "غرفتان",
+        "3 غرف",
+        "4 غرف",
+        "5 غرف فأكثر",
+        "منزل",
+        "مكتب",
+        "أخرى",
+      ],
       descLabel: "صف ما يجب نقله",
-      descPlaceholder: "مثال: صالون كامل، غرفتا نوم، أجهزة كهرومنزلية، بدون أغراض هشة بشكل خاص...",
+      descPlaceholder:
+        "مثال: صالون كامل، غرفتا نوم، أجهزة كهرومنزلية، بدون أغراض هشة بشكل خاص...",
       photosLabel: "صور لتقدير الحجم (اختياري)",
       dropzoneText: "اسحب صورك هنا أو",
       browseText: "تصفح",
