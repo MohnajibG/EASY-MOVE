@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   readonly VITE_EMAILJS_SERVICE_ID?: string;
   readonly VITE_EMAILJS_TEMPLATE_ID?: string;
   readonly VITE_EMAILJS_PUBLIC_KEY?: string;
+  readonly VITE_ELFSIGHT_REVIEWS_WIDGET_ID?: string;
+  readonly VITE_ELFSIGHT_INSTAGRAM_WIDGET_ID?: string;
 }
 
 interface ImportMeta {

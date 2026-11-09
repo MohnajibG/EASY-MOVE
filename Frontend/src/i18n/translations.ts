@@ -19,6 +19,7 @@ export const dict = {
       tarifs: "Tarifs",
       stockage: "Stockage",
       emballage: "Emballage",
+      avis: "Avis",
       faq: "FAQ",
       devis: "Devis gratuit",
       openMenuAria: "Ouvrir le menu",
@@ -184,6 +185,18 @@ export const dict = {
         },
       ],
     },
+    reviews: {
+      eyebrow: "Avis clients",
+      title: "Ils ont déménagé avec Easy Move",
+      subtitle: "Nos avis vérifiés, directement depuis Google.",
+      notConfigured: "Widget d'avis Google non configuré.",
+    },
+    instagramFeed: {
+      eyebrow: "Instagram",
+      title: "Nos dernières publications",
+      subtitle: "Suivez les coulisses de nos déménagements au quotidien.",
+      notConfigured: "Widget Instagram non configuré.",
+    },
     socialCTA: {
       title: "Suivez notre camion sur les réseaux",
       subtitle:
@@ -285,6 +298,7 @@ export const dict = {
       tarifs: "Pricing",
       stockage: "Storage",
       emballage: "Packing",
+      avis: "Reviews",
       faq: "FAQ",
       devis: "Free quote",
       openMenuAria: "Open menu",
@@ -449,6 +463,18 @@ export const dict = {
         },
       ],
     },
+    reviews: {
+      eyebrow: "Customer reviews",
+      title: "They moved with Easy Move",
+      subtitle: "Our verified reviews, straight from Google.",
+      notConfigured: "Google reviews widget not configured.",
+    },
+    instagramFeed: {
+      eyebrow: "Instagram",
+      title: "Our latest posts",
+      subtitle: "Follow the daily behind-the-scenes of our moves.",
+      notConfigured: "Instagram widget not configured.",
+    },
     socialCTA: {
       title: "Follow our truck on social media",
       subtitle:
@@ -550,6 +576,7 @@ export const dict = {
       tarifs: "الأسعار",
       stockage: "التخزين",
       emballage: "التغليف",
+      avis: "التقييمات",
       faq: "الأسئلة الشائعة",
       devis: "عرض سعر مجاني",
       openMenuAria: "فتح القائمة",
@@ -710,6 +737,18 @@ export const dict = {
           a: "نعم، نقدم حلاً آمنًا للتخزين على المدى القصير أو الطويل، مع الاسترجاع والتسليم في الوقت الذي يناسبك.",
         },
       ],
+    },
+    reviews: {
+      eyebrow: "آراء العملاء",
+      title: "انتقلوا مع Easy Move",
+      subtitle: "تقييماتنا الموثقة، مباشرة من Google.",
+      notConfigured: "أداة تقييمات Google غير مُفعّلة.",
+    },
+    instagramFeed: {
+      eyebrow: "إنستغرام",
+      title: "أحدث منشوراتنا",
+      subtitle: "تابع كواليس عمليات انتقالنا يوميًا.",
+      notConfigured: "أداة إنستغرام غير مُفعّلة.",
     },
     socialCTA: {
       title: "تابع شاحنتنا على مواقع التواصل",

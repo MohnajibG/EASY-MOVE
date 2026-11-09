@@ -23,6 +23,7 @@ const Navbar = () => {
     { href: "#tarifs", label: t.nav.tarifs },
     { href: "#stockage", label: t.nav.stockage },
     { href: "#emballage", label: t.nav.emballage },
+    { href: "#temoignages", label: t.nav.avis },
     { href: "#faq", label: t.nav.faq },
   ];
 

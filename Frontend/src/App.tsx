@@ -8,8 +8,9 @@ import Pricing from "./components/Pricing";
 import Storage from "./components/Storage";
 import Packing from "./components/Packing";
 import Gallery from "./components/Gallery";
-// import Testimonials from "./components/Testimonials";
+import GoogleReviews from "./components/GoogleReviews";
 import FAQ from "./components/FAQ";
+import InstagramFeed from "./components/InstagramFeed";
 import SocialCTA from "./components/SocialCTA";
 import Footer from "./components/Footer";
 import MiniFooter from "./components/MiniFooter";
@@ -29,8 +30,9 @@ const App = () => {
         <Storage />
         <Packing />
         <Gallery />
-        {/* <Testimonials /> */}
+        <GoogleReviews />
         <FAQ />
+        <InstagramFeed />
         <SocialCTA />
       </main>
       <Footer />
