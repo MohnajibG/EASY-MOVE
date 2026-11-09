@@ -1,6 +1,6 @@
 # Easy Move — Site web
 
-Site vitrine pour **Easy Move**, entreprise de déménagement en Algérie : présentation des services, formulaire de devis en 4 étapes, multilingue (FR / EN / AR avec support RTL).
+Site vitrine pour **Easy Move**, entreprise de déménagement en Algérie : présentation des services, formulaire de devis en 5 étapes, multilingue (FR / EN / AR avec support RTL).
 
 ## Stack technique
 
@@ -36,13 +36,13 @@ Le formulaire de devis a besoin de Supabase (stockage des demandes) et d'EmailJS
 cp .env.example .env.local
 ```
 
-| Variable | Où la trouver |
-|---|---|
-| `VITE_SUPABASE_URL` | Dashboard Supabase > Project Settings > API |
-| `VITE_SUPABASE_ANON_KEY` | Dashboard Supabase > Project Settings > API (clé **publishable/anon**, jamais la clé secrète) |
-| `VITE_EMAILJS_SERVICE_ID` | Dashboard EmailJS > Email Services |
-| `VITE_EMAILJS_TEMPLATE_ID` | Dashboard EmailJS > Email Templates |
-| `VITE_EMAILJS_PUBLIC_KEY` | Dashboard EmailJS > Account > General |
+| Variable                   | Où la trouver                                                                                 |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| `VITE_SUPABASE_URL`        | Dashboard Supabase > Project Settings > API                                                   |
+| `VITE_SUPABASE_ANON_KEY`   | Dashboard Supabase > Project Settings > API (clé **publishable/anon**, jamais la clé secrète) |
+| `VITE_EMAILJS_SERVICE_ID`  | Dashboard EmailJS > Email Services                                                            |
+| `VITE_EMAILJS_TEMPLATE_ID` | Dashboard EmailJS > Email Templates                                                           |
+| `VITE_EMAILJS_PUBLIC_KEY`  | Dashboard EmailJS > Account > General                                                         |
 
 ⚠️ Ne jamais utiliser la clé **secrète** Supabase (`sb_secret_...`) côté frontend — elle donnerait un accès complet à la base à n'importe quel visiteur du site.
 
