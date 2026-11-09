@@ -59,6 +59,8 @@ const emptyForm: FormData = {
   message: "",
 };
 
+const todayISO = () => new Date().toISOString().slice(0, 10);
+
 const stepIcons = [MapPin, Navigation, Building2, User];
 
 type Photo = { file: File; url: string };
@@ -204,7 +206,8 @@ const BookingForm = () => {
         data.prenom.trim() !== "" &&
         data.telephone.trim() !== "" &&
         data.email.trim() !== "" &&
-        data.dateSouhaitee !== ""
+        data.dateSouhaitee !== "" &&
+        data.dateSouhaitee >= todayISO()
       );
     return true;
   };
@@ -586,6 +589,7 @@ const BookingForm = () => {
                           <input
                             type="date"
                             value={data.dateSouhaitee}
+                            min={todayISO()}
                             onChange={(e) =>
                               set("dateSouhaitee", e.target.value)
                             }
