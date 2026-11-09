@@ -397,330 +397,321 @@ const BookingForm = () => {
 
           {/* step content */}
           <div className="relative min-h-90 overflow-hidden px-6 py-8 sm:px-10">
-                <motion.div
-                  key={step}
-                  initial={{ x: direction * 40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  {step === 0 && (
-                    <AddressStep
-                      title={t.booking.step0Title}
-                      adresse={data.departAdresse}
-                      etage={data.departEtage}
-                      ascenseur={data.departAscenseur}
-                      onAdresse={(v) => set("departAdresse", v)}
-                      onEtage={(v) => set("departEtage", v)}
-                      onAscenseur={(v) => set("departAscenseur", v)}
-                      placeholder={t.booking.addressPlaceholder}
-                    />
-                  )}
+            <motion.div
+              key={step}
+              initial={{ x: direction * 40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {step === 0 && (
+                <AddressStep
+                  title={t.booking.step0Title}
+                  adresse={data.departAdresse}
+                  etage={data.departEtage}
+                  ascenseur={data.departAscenseur}
+                  onAdresse={(v) => set("departAdresse", v)}
+                  onEtage={(v) => set("departEtage", v)}
+                  onAscenseur={(v) => set("departAscenseur", v)}
+                  placeholder={t.booking.addressPlaceholder}
+                />
+              )}
 
-                  {step === 1 && (
-                    <AddressStep
-                      title={t.booking.step1Title}
-                      adresse={data.arriveeAdresse}
-                      etage={data.arriveeEtage}
-                      ascenseur={data.arriveeAscenseur}
-                      onAdresse={(v) => set("arriveeAdresse", v)}
-                      onEtage={(v) => set("arriveeEtage", v)}
-                      onAscenseur={(v) => set("arriveeAscenseur", v)}
-                      placeholder={t.booking.addressPlaceholder}
-                    />
-                  )}
+              {step === 1 && (
+                <AddressStep
+                  title={t.booking.step1Title}
+                  adresse={data.arriveeAdresse}
+                  etage={data.arriveeEtage}
+                  ascenseur={data.arriveeAscenseur}
+                  onAdresse={(v) => set("arriveeAdresse", v)}
+                  onEtage={(v) => set("arriveeEtage", v)}
+                  onAscenseur={(v) => set("arriveeAscenseur", v)}
+                  placeholder={t.booking.addressPlaceholder}
+                />
+              )}
 
-                  {step === 2 && (
-                    <div className="space-y-5">
-                      <h3 className="text-xl font-bold text-black">
-                        {t.booking.step2Title}
-                      </h3>
+              {step === 2 && (
+                <div className="space-y-5">
+                  <h3 className="text-xl font-bold text-black">
+                    {t.booking.step2Title}
+                  </h3>
 
-                      <div>
-                        <label className={labelClass}>
-                          {t.booking.bienTypeLabel}
-                        </label>
-                        <div className="flex flex-wrap gap-2">
-                          {t.booking.bienTypes.map((type) => (
-                            <button
-                              key={type}
-                              type="button"
-                              onClick={() => set("typeBien", type)}
-                              className={`rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                                data.typeBien === type
-                                  ? "border-brand-blue bg-brand-blue text-white"
-                                  : "border-black/10 text-black/60 hover:border-black/20"
-                              }`}
-                            >
-                              {type}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className={labelClass}>
-                          {t.booking.descLabel}
-                        </label>
-                        <textarea
-                          value={data.description}
-                          onChange={(e) => set("description", e.target.value)}
-                          rows={3}
-                          placeholder={t.booking.descPlaceholder}
-                          className={`${inputClass} resize-none`}
-                        />
-                      </div>
-
-                      <div>
-                        <label className={labelClass}>
-                          {t.booking.photosLabel}
-                        </label>
-                        <label
-                          htmlFor="photos"
-                          onDragOver={(e) => {
-                            e.preventDefault();
-                            setDragActive(true);
-                          }}
-                          onDragLeave={() => setDragActive(false)}
-                          onDrop={onDrop}
-                          className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed px-4 py-8 text-center transition-colors ${
-                            dragActive
-                              ? "border-brand-blue bg-brand-blue/5"
-                              : "border-black/15 hover:border-black/30"
+                  <div>
+                    <label className={labelClass}>
+                      {t.booking.bienTypeLabel}
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {t.booking.bienTypes.map((type) => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => set("typeBien", type)}
+                          className={`rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+                            data.typeBien === type
+                              ? "border-brand-blue bg-brand-blue text-white"
+                              : "border-black/10 text-black/60 hover:border-black/20"
                           }`}
                         >
-                          <ImagePlus className="h-6 w-6 text-black/40" />
-                          <p className="text-xs text-black/50">
-                            {t.booking.dropzoneText}{" "}
-                            <span className="font-semibold text-brand-blue">
-                              {t.booking.browseText}
-                            </span>{" "}
-                            {t.booking.maxPhotos}
-                          </p>
-                          <input
-                            id="photos"
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            className="hidden"
-                            onChange={onFileInput}
-                          />
-                        </label>
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
-                        {photos.length > 0 && (
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {photos.map((p) => (
-                              <div
-                                key={p.url}
-                                className="group relative h-16 w-16"
-                              >
-                                <img
-                                  src={p.url}
-                                  alt=""
-                                  className="h-full w-full rounded-lg object-cover"
-                                />
-                                <button
-                                  type="button"
-                                  onClick={() => removePhoto(p.url)}
-                                  className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white"
-                                  aria-label={t.booking.removePhotoAria}
-                                >
-                                  <X className="h-3 w-3" />
-                                </button>
-                              </div>
-                            ))}
+                  <div>
+                    <label className={labelClass}>{t.booking.descLabel}</label>
+                    <textarea
+                      value={data.description}
+                      onChange={(e) => set("description", e.target.value)}
+                      rows={3}
+                      placeholder={t.booking.descPlaceholder}
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
+
+                  <div>
+                    <label className={labelClass}>
+                      {t.booking.photosLabel}
+                    </label>
+                    <label
+                      htmlFor="photos"
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        setDragActive(true);
+                      }}
+                      onDragLeave={() => setDragActive(false)}
+                      onDrop={onDrop}
+                      className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed px-4 py-8 text-center transition-colors ${
+                        dragActive
+                          ? "border-brand-blue bg-brand-blue/5"
+                          : "border-black/15 hover:border-black/30"
+                      }`}
+                    >
+                      <ImagePlus className="h-6 w-6 text-black/40" />
+                      <p className="text-xs text-black/50">
+                        {t.booking.dropzoneText}{" "}
+                        <span className="font-semibold text-brand-blue">
+                          {t.booking.browseText}
+                        </span>{" "}
+                        {t.booking.maxPhotos}
+                      </p>
+                      <input
+                        id="photos"
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        className="hidden"
+                        onChange={onFileInput}
+                      />
+                    </label>
+
+                    {photos.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {photos.map((p) => (
+                          <div key={p.url} className="group relative h-16 w-16">
+                            <img
+                              src={p.url}
+                              alt=""
+                              className="h-full w-full rounded-lg object-cover"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removePhoto(p.url)}
+                              className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-black text-white"
+                              aria-label={t.booking.removePhotoAria}
+                            >
+                              <X className="h-3 w-3" />
+                            </button>
                           </div>
-                        )}
+                        ))}
                       </div>
-                    </div>
-                  )}
-
-                  {step === 3 && (
-                    <div className="space-y-5">
-                      <h3 className="text-xl font-bold text-black">
-                        {t.booking.step3Title}
-                      </h3>
-
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div>
-                          <label className={labelClass}>
-                            {t.booking.prenomLabel}
-                          </label>
-                          <input
-                            type="text"
-                            value={data.prenom}
-                            onChange={(e) => set("prenom", e.target.value)}
-                            className={inputClass}
-                          />
-                        </div>
-                        <div>
-                          <label className={labelClass}>
-                            {t.booking.nomLabel}
-                          </label>
-                          <input
-                            type="text"
-                            value={data.nom}
-                            onChange={(e) => set("nom", e.target.value)}
-                            className={inputClass}
-                          />
-                        </div>
-                        <div>
-                          <label className={labelClass}>
-                            <Phone className="me-1 inline h-3 w-3" />
-                            {t.booking.telLabel}
-                          </label>
-                          <input
-                            type="tel"
-                            value={data.telephone}
-                            onChange={(e) => set("telephone", e.target.value)}
-                            placeholder={t.booking.telPlaceholder}
-                            className={inputClass}
-                          />
-                        </div>
-                        <div>
-                          <label className={labelClass}>
-                            <Mail className="me-1 inline h-3 w-3" />
-                            {t.booking.emailLabel}
-                          </label>
-                          <input
-                            type="email"
-                            value={data.email}
-                            onChange={(e) => set("email", e.target.value)}
-                            placeholder={t.booking.emailPlaceholder}
-                            className={inputClass}
-                          />
-                        </div>
-                        <div className="sm:col-span-2">
-                          <label className={labelClass}>
-                            <Calendar className="me-1 inline h-3 w-3" />
-                            {t.booking.dateLabel}
-                          </label>
-                          <input
-                            type="date"
-                            value={data.dateSouhaitee}
-                            min={todayISO()}
-                            onChange={(e) =>
-                              set("dateSouhaitee", e.target.value)
-                            }
-                            className={inputClass}
-                          />
-                        </div>
-                        <div className="sm:col-span-2">
-                          <label className={labelClass}>
-                            <MessageSquare className="me-1 inline h-3 w-3" />
-                            {t.booking.messageLabel}
-                          </label>
-                          <textarea
-                            value={data.message}
-                            onChange={(e) => set("message", e.target.value)}
-                            rows={2}
-                            placeholder={t.booking.messagePlaceholder}
-                            className={`${inputClass} resize-none`}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {step === 4 && (
-                    <div className="flex flex-col items-center gap-4 py-10 text-center">
-                      {submitted ? (
-                        <>
-                          <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 15,
-                            }}
-                            className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green"
-                          >
-                            <Check className="h-8 w-8 text-black" />
-                          </motion.span>
-                          <h3 className="text-2xl font-bold text-black">
-                            {t.booking.successTitle}
-                          </h3>
-                          <p className="max-w-sm text-black/60">
-                            {t.booking.successMsg(data.prenom, data.telephone)}
-                          </p>
-                        </>
-                      ) : submitError ? (
-                        <>
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black">
-                            <X className="h-8 w-8 text-white" />
-                          </span>
-                          <p className="max-w-sm text-sm font-semibold text-black">
-                            {t.booking.submitError}
-                          </p>
-                          <motion.button
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            type="button"
-                            onClick={retry}
-                            className="rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white"
-                          >
-                            {t.booking.nextBtn}
-                          </motion.button>
-                        </>
-                      ) : isSubmitting ? (
-                        <>
-                          <motion.span
-                            animate={{ rotate: 360 }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              ease: "linear",
-                            }}
-                            className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10"
-                          >
-                            <Send className="h-7 w-7 text-brand-blue" />
-                          </motion.span>
-                          <p className="text-sm font-medium text-black/60">
-                            {t.booking.submittingBtn}
-                          </p>
-                        </>
-                      ) : null}
-                    </div>
-                  )}
-                </motion.div>
-
-                {showErrors && !isStepValid(step) && (
-                  <p className="mt-4 text-xs font-semibold text-black">
-                    {t.booking.errorMsg}
-                  </p>
-                )}
-              </div>
-
-              {step < 4 && (
-                <div className="flex items-center justify-between border-t border-black/10 px-6 py-5 sm:px-10">
-                  <button
-                    type="button"
-                    onClick={goBack}
-                    disabled={step === 0}
-                    className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
-                  >
-                    <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
-                    {t.booking.backBtn}
-                  </button>
-
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    type="button"
-                    onClick={goNext}
-                    className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold ${
-                      step === LAST_FORM_STEP
-                        ? "bg-brand-green text-black"
-                        : "bg-brand-blue text-white"
-                    }`}
-                  >
-                    {step === LAST_FORM_STEP
-                      ? t.booking.submitBtn
-                      : t.booking.nextBtn}
-                    <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                  </motion.button>
+                    )}
+                  </div>
                 </div>
               )}
+
+              {step === 3 && (
+                <div className="space-y-5">
+                  <h3 className="text-xl font-bold text-black">
+                    {t.booking.step3Title}
+                  </h3>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className={labelClass}>
+                        {t.booking.prenomLabel}
+                      </label>
+                      <input
+                        type="text"
+                        value={data.prenom}
+                        onChange={(e) => set("prenom", e.target.value)}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label className={labelClass}>{t.booking.nomLabel}</label>
+                      <input
+                        type="text"
+                        value={data.nom}
+                        onChange={(e) => set("nom", e.target.value)}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label className={labelClass}>
+                        <Phone className="me-1 inline h-3 w-3" />
+                        {t.booking.telLabel}
+                      </label>
+                      <input
+                        type="tel"
+                        value={data.telephone}
+                        onChange={(e) => set("telephone", e.target.value)}
+                        placeholder={t.booking.telPlaceholder}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label className={labelClass}>
+                        <Mail className="me-1 inline h-3 w-3" />
+                        {t.booking.emailLabel}
+                      </label>
+                      <input
+                        type="email"
+                        value={data.email}
+                        onChange={(e) => set("email", e.target.value)}
+                        placeholder={t.booking.emailPlaceholder}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className={labelClass}>
+                        <Calendar className="me-1 inline h-3 w-3" />
+                        {t.booking.dateLabel}
+                      </label>
+                      <input
+                        type="date"
+                        value={data.dateSouhaitee}
+                        min={todayISO()}
+                        onChange={(e) => set("dateSouhaitee", e.target.value)}
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className={labelClass}>
+                        <MessageSquare className="me-1 inline h-3 w-3" />
+                        {t.booking.messageLabel}
+                      </label>
+                      <textarea
+                        value={data.message}
+                        onChange={(e) => set("message", e.target.value)}
+                        rows={2}
+                        placeholder={t.booking.messagePlaceholder}
+                        className={`${inputClass} resize-none`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {step === 4 && (
+                <div className="flex flex-col items-center gap-4 py-10 text-center">
+                  {submitted ? (
+                    <>
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 15,
+                        }}
+                        className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green"
+                      >
+                        <Check className="h-8 w-8 text-black" />
+                      </motion.span>
+                      <h3 className="text-2xl font-bold text-black">
+                        {t.booking.successTitle}
+                      </h3>
+                      <p className="max-w-sm text-black/60">
+                        {t.booking.successMsg(data.prenom, data.telephone)}
+                      </p>
+                    </>
+                  ) : submitError ? (
+                    <>
+                      <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black">
+                        <X className="h-8 w-8 text-white" />
+                      </span>
+                      <p className="max-w-sm text-sm font-semibold text-black">
+                        {t.booking.submitError}
+                      </p>
+                      <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        type="button"
+                        onClick={retry}
+                        className="rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white"
+                      >
+                        {t.booking.nextBtn}
+                      </motion.button>
+                    </>
+                  ) : isSubmitting ? (
+                    <>
+                      <motion.span
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10"
+                      >
+                        <Send className="h-7 w-7 text-brand-blue" />
+                      </motion.span>
+                      <p className="text-sm font-medium text-black/60">
+                        {t.booking.submittingBtn}
+                      </p>
+                    </>
+                  ) : null}
+                </div>
+              )}
+            </motion.div>
+
+            {showErrors && !isStepValid(step) && (
+              <p className="mt-4 text-xs font-semibold text-black">
+                {t.booking.errorMsg}
+              </p>
+            )}
+          </div>
+
+          {step < 4 && (
+            <div className="flex items-center justify-between border-t border-black/10 px-6 py-5 sm:px-10">
+              <button
+                type="button"
+                onClick={goBack}
+                disabled={step === 0}
+                className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
+              >
+                <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
+                {t.booking.backBtn}
+              </button>
+
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                type="button"
+                onClick={goNext}
+                className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold ${
+                  step === LAST_FORM_STEP
+                    ? "bg-brand-green text-black"
+                    : "bg-brand-blue text-white"
+                }`}
+              >
+                {step === LAST_FORM_STEP
+                  ? t.booking.submitBtn
+                  : t.booking.nextBtn}
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+              </motion.button>
+            </div>
+          )}
         </div>
       </motion.div>
     </section>
