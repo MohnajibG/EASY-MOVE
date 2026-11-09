@@ -646,10 +646,10 @@ const BookingForm = () => {
                         </>
                       ) : submitError ? (
                         <>
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
-                            <X className="h-8 w-8 text-red-600" />
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black">
+                            <X className="h-8 w-8 text-white" />
                           </span>
-                          <p className="max-w-sm text-sm font-medium text-red-600">
+                          <p className="max-w-sm text-sm font-semibold text-black">
                             {t.booking.submitError}
                           </p>
                           <motion.button
@@ -685,7 +685,7 @@ const BookingForm = () => {
                 </motion.div>
 
                 {showErrors && !isStepValid(step) && (
-                  <p className="mt-4 text-xs font-medium text-red-600">
+                  <p className="mt-4 text-xs font-semibold text-black">
                     {t.booking.errorMsg}
                   </p>
                 )}

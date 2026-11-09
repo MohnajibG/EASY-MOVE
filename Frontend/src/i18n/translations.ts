@@ -9,7 +9,7 @@ export const languages: { code: Lang; label: string; dir: "ltr" | "rtl" }[] = [
 export const dict = {
   fr: {
     meta: {
-      title: "Easy Move Déménagement en toute facilité",
+      title: "Easy Move — Déménagement en toute facilité",
       description:
         "Easy Move - Déménagement résidentiel, professionnel et longue distance partout en Algérie. Devis gratuit, prix fixe garanti.",
     },
@@ -21,13 +21,14 @@ export const dict = {
       emballage: "Emballage",
       faq: "FAQ",
       devis: "Devis gratuit",
+      openMenuAria: "Ouvrir le menu",
     },
     hero: {
       badge: "Partout en Algérie",
       titlePart1: "Votre déménagement,",
       titleHighlight: "en toute facilité",
       subtitle:
-        "Équipe professionnelle, transport sécurisé et emballage soigné. Votre bien, notre priorité où que vous alliez en Algérie.",
+        "Équipe professionnelle, transport sécurisé et emballage soigné. Votre bien, notre priorité — où que vous alliez en Algérie.",
       ctaPrimary: "Obtenir un devis gratuit",
       imgAlt: "Déménager c'est stressant, la solution avec Easy Move",
     },
@@ -274,7 +275,7 @@ export const dict = {
   },
   en: {
     meta: {
-      title: "Easy Move Moving made effortless",
+      title: "Easy Move — Moving made effortless",
       description:
         "Easy Move - Residential, professional and long-distance moving all over Algeria. Free quote, guaranteed fixed price.",
     },
@@ -286,13 +287,14 @@ export const dict = {
       emballage: "Packing",
       faq: "FAQ",
       devis: "Free quote",
+      openMenuAria: "Open menu",
     },
     hero: {
       badge: "All over Algeria",
       titlePart1: "Your move,",
       titleHighlight: "made effortless",
       subtitle:
-        "Professional crew, secure transport and careful packing. Your belongings, our priority wherever you're headed in Algeria.",
+        "Professional crew, secure transport and careful packing. Your belongings, our priority — wherever you're headed in Algeria.",
       ctaPrimary: "Get a free quote",
       imgAlt: "Moving is stressful the Easy Move solution",
     },
@@ -538,7 +540,7 @@ export const dict = {
   },
   ar: {
     meta: {
-      title: "Easy Move انتقال بكل سهولة",
+      title: "Easy Move — انتقال بكل سهولة",
       description:
         "Easy Move - خدمات نقل الأثاث السكني والمهني ولمسافات طويلة في جميع أنحاء الجزائر. عرض سعر مجاني وسعر ثابت مضمون.",
     },
@@ -550,6 +552,7 @@ export const dict = {
       emballage: "التغليف",
       faq: "الأسئلة الشائعة",
       devis: "عرض سعر مجاني",
+      openMenuAria: "فتح القائمة",
     },
     hero: {
       badge: "في جميع أنحاء الجزائر",

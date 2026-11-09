@@ -86,7 +86,7 @@ const Navbar = () => {
             type="button"
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-full text-white"
-            aria-label="Ouvrir le menu"
+            aria-label={t.nav.openMenuAria}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
