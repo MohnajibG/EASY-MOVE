@@ -18,6 +18,7 @@ import {
   MessageSquare,
   Navigation,
   Phone,
+  Send,
   User,
   X,
 } from "lucide-react";
@@ -61,7 +62,8 @@ const emptyForm: FormData = {
 
 const todayISO = () => new Date().toISOString().slice(0, 10);
 
-const stepIcons = [MapPin, Navigation, Building2, User];
+const stepIcons = [MapPin, Navigation, Building2, User, Send];
+const LAST_FORM_STEP = 3;
 
 type Photo = { file: File; url: string };
 
@@ -298,7 +300,9 @@ const BookingForm = () => {
       return;
     }
     setShowErrors(false);
-    if (step === steps.length - 1) {
+    if (step === LAST_FORM_STEP) {
+      setDirection(1);
+      setStep(LAST_FORM_STEP + 1);
       submitBooking();
       return;
     }
@@ -310,6 +314,10 @@ const BookingForm = () => {
     setShowErrors(false);
     setDirection(-1);
     setStep((s) => Math.max(0, s - 1));
+  };
+
+  const retry = () => {
+    submitBooking();
   };
 
   const inputClass =
@@ -336,59 +344,59 @@ const BookingForm = () => {
         </div>
 
         <div className="overflow-hidden rounded-4xl bg-white shadow-2xl shadow-black">
-          {!submitted ? (
-            <>
-              {/* stepper */}
-              <div className="flex items-center gap-2 border-b border-black/10 px-6 py-5 sm:gap-4 sm:px-10">
-                {steps.map((s, i) => (
-                  <div
-                    key={s.label}
-                    className="flex flex-1 items-center gap-2 sm:gap-4"
+          {/* stepper — reste affiché jusqu'à la fin, même après l'envoi */}
+          <div className="flex items-center justify-center gap-1.5 border-b border-black/10 px-4 py-5 sm:gap-2 sm:px-8">
+            {steps.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex items-center gap-1.5 sm:gap-2 ${
+                  i === steps.length - 1 ? "shrink-0" : "flex-1"
+                }`}
+              >
+                <div className="flex shrink-0 flex-col items-center gap-1.5 sm:w-16">
+                  <motion.div
+                    animate={{
+                      backgroundColor:
+                        i < step
+                          ? "#1b1aff"
+                          : i === step
+                            ? "#1b1aff"
+                            : "#f4f4f5",
+                      scale: i === step ? 1.1 : 1,
+                    }}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-9 sm:w-9"
                   >
-                    <div className="flex flex-col items-center gap-1.5">
-                      <motion.div
-                        animate={{
-                          backgroundColor:
-                            i < step
-                              ? "#1b1aff"
-                              : i === step
-                                ? "#1b1aff"
-                                : "#f4f4f5",
-                          scale: i === step ? 1.1 : 1,
-                        }}
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-                      >
-                        {i < step ? (
-                          <Check className="h-4 w-4 text-white" />
-                        ) : (
-                          <s.icon
-                            className={`h-4 w-4 ${i === step ? "text-white" : "text-black/40"}`}
-                          />
-                        )}
-                      </motion.div>
-                      <span
-                        className={`hidden text-[11px] font-semibold sm:block ${
-                          i === step ? "text-black" : "text-black/40"
-                        }`}
-                      >
-                        {s.label}
-                      </span>
-                    </div>
-                    {i < steps.length - 1 && (
-                      <div className="h-0.5 flex-1 overflow-hidden rounded-full bg-black/10">
-                        <motion.div
-                          animate={{ width: i < step ? "100%" : "0%" }}
-                          transition={{ duration: 0.4 }}
-                          className="h-full bg-brand-blue"
-                        />
-                      </div>
+                    {i < step || (i === step && submitted) ? (
+                      <Check className="h-4 w-4 text-white" />
+                    ) : (
+                      <s.icon
+                        className={`h-4 w-4 ${i === step ? "text-white" : "text-black/40"}`}
+                      />
                     )}
+                  </motion.div>
+                  <span
+                    className={`hidden text-center text-[10px] leading-tight font-semibold sm:block ${
+                      i === step ? "text-black" : "text-black/40"
+                    }`}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+                {i < steps.length - 1 && (
+                  <div className="h-0.5 w-full min-w-3 flex-1 overflow-hidden rounded-full bg-black/10">
+                    <motion.div
+                      animate={{ width: i < step ? "100%" : "0%" }}
+                      transition={{ duration: 0.4 }}
+                      className="h-full bg-brand-blue"
+                    />
                   </div>
-                ))}
+                )}
               </div>
+            ))}
+          </div>
 
-              {/* step content */}
-              <div className="relative min-h-90 overflow-hidden px-6 py-8 sm:px-10">
+          {/* step content */}
+          <div className="relative min-h-90 overflow-hidden px-6 py-8 sm:px-10">
                 <motion.div
                   key={step}
                   initial={{ x: direction * 40, opacity: 0 }}
@@ -612,6 +620,68 @@ const BookingForm = () => {
                       </div>
                     </div>
                   )}
+
+                  {step === 4 && (
+                    <div className="flex flex-col items-center gap-4 py-10 text-center">
+                      {submitted ? (
+                        <>
+                          <motion.span
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 15,
+                            }}
+                            className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green"
+                          >
+                            <Check className="h-8 w-8 text-black" />
+                          </motion.span>
+                          <h3 className="text-2xl font-bold text-black">
+                            {t.booking.successTitle}
+                          </h3>
+                          <p className="max-w-sm text-black/60">
+                            {t.booking.successMsg(data.prenom, data.telephone)}
+                          </p>
+                        </>
+                      ) : submitError ? (
+                        <>
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
+                            <X className="h-8 w-8 text-red-600" />
+                          </span>
+                          <p className="max-w-sm text-sm font-medium text-red-600">
+                            {t.booking.submitError}
+                          </p>
+                          <motion.button
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            type="button"
+                            onClick={retry}
+                            className="rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white"
+                          >
+                            {t.booking.nextBtn}
+                          </motion.button>
+                        </>
+                      ) : isSubmitting ? (
+                        <>
+                          <motion.span
+                            animate={{ rotate: 360 }}
+                            transition={{
+                              duration: 1,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }}
+                            className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-blue/10"
+                          >
+                            <Send className="h-7 w-7 text-brand-blue" />
+                          </motion.span>
+                          <p className="text-sm font-medium text-black/60">
+                            {t.booking.submittingBtn}
+                          </p>
+                        </>
+                      ) : null}
+                    </div>
+                  )}
                 </motion.div>
 
                 {showErrors && !isStepValid(step) && (
@@ -619,70 +689,38 @@ const BookingForm = () => {
                     {t.booking.errorMsg}
                   </p>
                 )}
-                {submitError && (
-                  <p className="mt-4 text-xs font-medium text-red-600">
-                    {t.booking.submitError}
-                  </p>
-                )}
               </div>
 
-              {/* navigation */}
-              <div className="flex items-center justify-between border-t border-black/10 px-6 py-5 sm:px-10">
-                <button
-                  type="button"
-                  onClick={goBack}
-                  disabled={step === 0 || isSubmitting}
-                  className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
-                >
-                  <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
-                  {t.booking.backBtn}
-                </button>
+              {step < 4 && (
+                <div className="flex items-center justify-between border-t border-black/10 px-6 py-5 sm:px-10">
+                  <button
+                    type="button"
+                    onClick={goBack}
+                    disabled={step === 0}
+                    className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition-opacity disabled:opacity-0"
+                  >
+                    <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
+                    {t.booking.backBtn}
+                  </button>
 
-                <motion.button
-                  whileHover={{ scale: isSubmitting ? 1 : 1.03 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
-                  type="button"
-                  onClick={goNext}
-                  disabled={isSubmitting}
-                  className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold disabled:opacity-70 ${
-                    step === steps.length - 1
-                      ? "bg-brand-green text-black"
-                      : "bg-brand-blue text-white"
-                  }`}
-                >
-                  {step === steps.length - 1
-                    ? isSubmitting
-                      ? t.booking.submittingBtn
-                      : t.booking.submitBtn
-                    : t.booking.nextBtn}
-                  {!isSubmitting && (
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    type="button"
+                    onClick={goNext}
+                    className={`flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-semibold ${
+                      step === LAST_FORM_STEP
+                        ? "bg-brand-green text-black"
+                        : "bg-brand-blue text-white"
+                    }`}
+                  >
+                    {step === LAST_FORM_STEP
+                      ? t.booking.submitBtn
+                      : t.booking.nextBtn}
                     <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                  )}
-                </motion.button>
-              </div>
-            </>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center gap-4 px-10 py-20 text-center"
-            >
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green"
-              >
-                <Check className="h-8 w-8 text-black" />
-              </motion.span>
-              <h3 className="text-2xl font-bold text-black">
-                {t.booking.successTitle}
-              </h3>
-              <p className="max-w-sm text-black/60">
-                {t.booking.successMsg(data.prenom, data.telephone)}
-              </p>
-            </motion.div>
-          )}
+                  </motion.button>
+                </div>
+              )}
         </div>
       </motion.div>
     </section>
