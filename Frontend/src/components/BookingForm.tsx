@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { BOOKING_PHOTOS_BUCKET, supabase } from "../lib/supabase";
+import { sendBookingNotificationEmail } from "../lib/emailjs";
 
 type FormData = {
   departAdresse: string;
@@ -262,6 +263,22 @@ const BookingForm = () => {
           message: data.message || null,
         });
       if (insertError) throw insertError;
+
+      // Notification email : best-effort, ne bloque jamais la confirmation
+      // à l'utilisateur puisque la demande est déjà enregistrée en base.
+      sendBookingNotificationEmail({
+        from_name: `${data.prenom} ${data.nom}`,
+        phone: data.telephone,
+        email: data.email,
+        date: data.dateSouhaitee,
+        depart: `${data.departAdresse} (${data.departEtage})`,
+        arrivee: `${data.arriveeAdresse} (${data.arriveeEtage})`,
+        type_bien: data.typeBien,
+        description: data.description || "—",
+        message: data.message || "—",
+        photos_count: String(photoUrls.length),
+        lang,
+      });
 
       setSubmitted(true);
     } catch (err) {
