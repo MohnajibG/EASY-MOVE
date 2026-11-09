@@ -1,75 +1,83 @@
-# React + TypeScript + Vite
+# Easy Move — Site web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site vitrine pour **Easy Move**, entreprise de déménagement en Algérie : présentation des services, formulaire de devis en 4 étapes, multilingue (FR / EN / AR avec support RTL).
 
-Currently, two official plugins are available:
+## Stack technique
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript** + **Vite**
+- **Tailwind CSS v4**
+- **Framer Motion** (animations)
+- **Supabase** (base de données + stockage des photos du formulaire)
+- **EmailJS** (notification par email à chaque nouvelle demande)
+- **lucide-react** (icônes)
 
-## React Compiler
+## Démarrer en local
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+yarn install
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Le site tourne alors sur [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Autres commandes utiles :
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn build      # build de production dans dist/
+yarn preview    # prévisualiser le build de production
+yarn tsc -b --noEmit   # vérifier les types sans build
+```
+
+## Variables d'environnement
+
+Le formulaire de devis a besoin de Supabase (stockage des demandes) et d'EmailJS (notification email) pour fonctionner. Copie `.env.example` en `.env.local` et renseigne tes propres valeurs :
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Où la trouver |
+|---|---|
+| `VITE_SUPABASE_URL` | Dashboard Supabase > Project Settings > API |
+| `VITE_SUPABASE_ANON_KEY` | Dashboard Supabase > Project Settings > API (clé **publishable/anon**, jamais la clé secrète) |
+| `VITE_EMAILJS_SERVICE_ID` | Dashboard EmailJS > Email Services |
+| `VITE_EMAILJS_TEMPLATE_ID` | Dashboard EmailJS > Email Templates |
+| `VITE_EMAILJS_PUBLIC_KEY` | Dashboard EmailJS > Account > General |
+
+⚠️ Ne jamais utiliser la clé **secrète** Supabase (`sb_secret_...`) côté frontend — elle donnerait un accès complet à la base à n'importe quel visiteur du site.
+
+Sans ces variables, le site fonctionne normalement mais le formulaire affiche un message d'erreur à l'envoi (comportement voulu, pas un bug).
+
+### Configurer Supabase (une seule fois)
+
+1. Crée un projet sur [supabase.com](https://supabase.com)
+2. Dans **SQL Editor**, exécute le contenu de [`supabase/schema.sql`](supabase/schema.sql) — ça crée la table `booking_requests`, le bucket de stockage `booking-photos`, et les règles de sécurité (le site peut créer des demandes, personne ne peut lire celles des autres)
+3. Les demandes reçues sont consultables dans **Table Editor > booking_requests**
+
+### Configurer EmailJS (une seule fois)
+
+1. Crée un compte sur [emailjs.com](https://www.emailjs.com) et connecte une boîte mail (Email Services)
+2. Crée un template (Email Templates) — le contenu HTML prêt à coller se trouve dans [`supabase/emailjs-template.html`](supabase/emailjs-template.html)
+3. Renseigne ton adresse en "To Email" dans le template
+
+## Déploiement (Vercel)
+
+Le projet est prévu pour être déployé sur Vercel. Pense à ajouter les 5 variables d'environnement ci-dessus dans **Project Settings > Environment Variables** (type **Config**, pas Secret — ce sont des clés publiques côté client), pour les environnements Production + Preview + Development.
+
+## Structure du projet
 
 ```
+src/
+  components/     composants de chaque section du site (Hero, BookingForm, Footer, ...)
+  i18n/           dictionnaire de traductions FR/EN/AR + contexte de langue
+  lib/            clients Supabase et EmailJS
+  constants/      liens réseaux sociaux
+  assets/         images et visuels de marque
+supabase/
+  schema.sql              schéma SQL à exécuter dans Supabase
+  emailjs-template.html   template HTML pour la notification email
+```
+
+## Langues
+
+Le sélecteur de langue (en haut à droite de la navbar) permet de basculer entre français, anglais et arabe. L'arabe bascule automatiquement toute la mise en page en RTL. Les traductions se trouvent dans `src/i18n/translations.ts`.
