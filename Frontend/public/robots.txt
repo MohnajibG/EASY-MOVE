@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /en-construction
+
+Sitemap: https://easymovedz.com/sitemap.xml

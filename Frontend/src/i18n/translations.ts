@@ -288,6 +288,8 @@ export const dict = {
     },
     legal: {
       title: "Mentions légales",
+      metaDescription:
+        "Mentions légales d'Easy Move : éditeur du site, hébergement, propriété intellectuelle et usage des données personnelles.",
       updated: "Dernière mise à jour : novembre 2026",
       backHome: "Retour à l'accueil",
       sections: [
@@ -619,6 +621,8 @@ export const dict = {
     },
     legal: {
       title: "Legal notice",
+      metaDescription:
+        "Easy Move's legal notice: site publisher, hosting, intellectual property and use of personal data.",
       updated: "Last updated: November 2026",
       backHome: "Back to home",
       sections: [
@@ -947,6 +951,8 @@ export const dict = {
     },
     legal: {
       title: "الإشعار القانوني",
+      metaDescription:
+        "الإشعار القانوني لشركة Easy Move: ناشر الموقع، الاستضافة، الملكية الفكرية واستخدام البيانات الشخصية.",
       updated: "آخر تحديث: نوفمبر 2026",
       backHome: "العودة إلى الرئيسية",
       sections: [

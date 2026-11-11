@@ -84,6 +84,22 @@ Le site étant maintenant multi-pages (React Router), l'hébergement doit rediri
 
 Pense aussi à ajouter les 5 variables d'environnement ci-dessus (Vercel : **Project Settings > Environment Variables**, type **Config** car ce sont des clés publiques côté client, pour Production + Preview + Development).
 
+## SEO
+
+- `index.html` contient les balises meta par défaut (description, Open Graph, Twitter Card) et les données structurées JSON-LD (schema.org `MovingCompany`).
+- `src/components/Seo.tsx` met à jour dynamiquement le titre, la description, le canonical et les balises Open Graph selon la page et la langue active.
+- Le 404 et la page `/en-construction` sont marqués `noindex` (ne doivent pas apparaître dans Google).
+- `public/robots.txt` et `public/sitemap.xml` : à vérifier/mettre à jour si de nouvelles pages publiques sont ajoutées.
+- Le domaine utilisé partout (`src/constants/site.ts`, `index.html`, `robots.txt`, `sitemap.xml`) est `easymovedz.com` — à changer dans ces 4 endroits si le domaine final change.
+
+⚠️ Limite connue : le site est un SPA multilingue sur une seule URL par page (FR/EN/AR changent via un sélecteur, pas via des URLs différentes comme `/en/...`). Google n'indexera donc que le contenu dans une seule langue par URL (généralement le français, la langue par défaut au premier chargement). Pour un référencement optimal dans les 3 langues, il faudrait des URLs dédiées par langue — à prévoir si le trafic anglophone/arabophone devient important.
+
+## Performance
+
+- Les images lourdes (`src/assets/*.jpg`) ont été redimensionnées et recompressées à une taille proche de leur affichage réel.
+- Les widgets Elfsight (avis + Instagram, ~1,3 Mo de JS à eux deux) ne se chargent plus qu'au moment où l'utilisateur approche ces sections en scrollant (`src/hooks/useElfsightScript.ts`), au lieu de se charger systématiquement dès l'arrivée sur le site.
+- L'image du Hero (la plus visible au chargement) est marquée prioritaire (`fetchPriority="high"`) avec des dimensions explicites pour éviter les sauts de mise en page.
+
 ## Structure du projet
 
 ```

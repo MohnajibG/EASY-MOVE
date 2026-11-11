@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import Seo from "../components/Seo";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MiniFooter from "../components/MiniFooter";
@@ -12,6 +13,7 @@ const MentionsLegales = () => {
 
   return (
     <>
+      <Seo title={`${t.legal.title} — Easy Move`} description={t.legal.metaDescription} />
       <Navbar />
       <main className="bg-white pt-32 pb-24 lg:pt-40">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">

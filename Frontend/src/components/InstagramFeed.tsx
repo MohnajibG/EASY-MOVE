@@ -1,26 +1,17 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { useElfsightScript } from "../hooks/useElfsightScript";
 
-const ELFSIGHT_SCRIPT_SRC = "https://elfsightcdn.com/platform.js";
 const widgetId = import.meta.env.VITE_ELFSIGHT_INSTAGRAM_WIDGET_ID as
   | string
   | undefined;
 
 const InstagramFeed = () => {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (!widgetId) return;
-    if (document.querySelector(`script[src="${ELFSIGHT_SCRIPT_SRC}"]`)) return;
-    const script = document.createElement("script");
-    script.src = ELFSIGHT_SCRIPT_SRC;
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+  const sectionRef = useElfsightScript(!!widgetId);
 
   return (
-    <section className="bg-black py-24">
+    <section ref={sectionRef} className="bg-black py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

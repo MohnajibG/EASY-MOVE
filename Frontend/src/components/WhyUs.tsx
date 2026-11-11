@@ -34,6 +34,9 @@ const WhyUs = () => {
             <img
               src={packingBox}
               alt="Easy Move"
+              width={1000}
+              height={702}
+              loading="lazy"
               className="w-full rounded-4xl shadow-2xl shadow-black ring-1 ring-white/10"
             />
           </motion.div>

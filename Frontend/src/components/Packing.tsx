@@ -23,12 +23,18 @@ const Packing = () => {
               <img
                 src={truckBack}
                 alt="Easy Move"
+                width={1200}
+                height={1200}
+                loading="lazy"
                 className="w-full rounded-4xl shadow-xl shadow-black/10"
               />
             </div>
             <img
               src={packingTape}
               alt="Easy Move"
+              width={900}
+              height={631}
+              loading="lazy"
               className="h-full w-full rounded-2xl object-cover shadow-lg shadow-black/10"
             />
             <div className="flex flex-col justify-center rounded-2xl bg-black p-5 text-white">

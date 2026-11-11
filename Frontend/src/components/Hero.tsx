@@ -108,6 +108,9 @@ const Hero = () => {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             src={stressSolution}
             alt={t.hero.imgAlt}
+            width={1200}
+            height={1200}
+            fetchPriority="high"
             className="w-full rounded-4xl shadow-2xl shadow-black ring-1 ring-white/10"
           />
         </motion.div>

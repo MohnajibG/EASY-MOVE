@@ -1,3 +1,4 @@
+import Seo from "../components/Seo";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import BookingForm from "../components/BookingForm";
@@ -19,6 +20,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp";
 const HomePage = () => {
   return (
     <>
+      <Seo />
       <Navbar />
       <main>
         <Hero />

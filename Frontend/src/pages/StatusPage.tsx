@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import logo from "../assets/logo-mark.png";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import Seo from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 
 type Variant = "notFound" | "error" | "construction";
@@ -26,6 +27,7 @@ const StatusPage = ({ variant }: { variant: Variant }) => {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-black">
+      <Seo title={copy.title} description={copy.subtitle} noindex />
       <div className="grid-texture pointer-events-none absolute inset-0 mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,black,transparent)]" />
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

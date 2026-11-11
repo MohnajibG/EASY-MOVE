@@ -1,26 +1,17 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { useElfsightScript } from "../hooks/useElfsightScript";
 
-const ELFSIGHT_SCRIPT_SRC = "https://elfsightcdn.com/platform.js";
 const widgetId = import.meta.env.VITE_ELFSIGHT_REVIEWS_WIDGET_ID as
   | string
   | undefined;
 
 const GoogleReviews = () => {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (!widgetId) return;
-    if (document.querySelector(`script[src="${ELFSIGHT_SCRIPT_SRC}"]`)) return;
-    const script = document.createElement("script");
-    script.src = ELFSIGHT_SCRIPT_SRC;
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+  const sectionRef = useElfsightScript(!!widgetId);
 
   return (
-    <section id="temoignages" className="bg-white py-24">
+    <section id="temoignages" ref={sectionRef} className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
