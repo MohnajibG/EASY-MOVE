@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, Phone, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo-mark.png";
 import { useLanguage } from "../i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const { t } = useLanguage();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -18,25 +21,25 @@ const Navbar = () => {
   }, []);
 
   const links = [
-    { href: "#accueil", label: t.nav.accueil },
-    { href: "#services", label: t.nav.services },
-    { href: "#tarifs", label: t.nav.tarifs },
-    { href: "#stockage", label: t.nav.stockage },
-    { href: "#emballage", label: t.nav.emballage },
-    { href: "#temoignages", label: t.nav.avis },
-    { href: "#faq", label: t.nav.faq },
+    { href: "/#accueil", label: t.nav.accueil },
+    { href: "/#services", label: t.nav.services },
+    { href: "/#tarifs", label: t.nav.tarifs },
+    { href: "/#stockage", label: t.nav.stockage },
+    { href: "/#emballage", label: t.nav.emballage },
+    { href: "/#temoignages", label: t.nav.avis },
+    { href: "/#faq", label: t.nav.faq },
   ];
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || !isHome
           ? "bg-black/80 shadow-sm shadow-black/40 backdrop-blur-lg"
           : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
-        <a href="#accueil" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5">
           <motion.img
             whileHover={{ rotate: -8, scale: 1.08 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -47,7 +50,7 @@ const Navbar = () => {
           <span className="font-display text-lg text-white">
             Easy<span className="text-brand-cyan">Move</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
@@ -74,7 +77,7 @@ const Navbar = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            href="#accueil"
+            href="/#devis"
             className="rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-black"
           >
             {t.nav.devis}
@@ -122,7 +125,7 @@ const Navbar = () => {
               <span dir="ltr">07 78 63 74 33</span>
             </a>
             <a
-              href="#accueil"
+              href="/#devis"
               onClick={() => setOpen(false)}
               className="rounded-full bg-brand-green px-5 py-3 text-center text-sm font-semibold text-black"
             >

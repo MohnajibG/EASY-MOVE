@@ -214,6 +214,7 @@ export const dict = {
       devisBtn: "Devis gratuit",
       whatsapp: "WhatsApp",
       whatsappChatAria: "Discuter sur WhatsApp",
+      legalLink: "Mentions légales",
     },
     miniFooter: {
       madeBy: "Site conçu par",
@@ -284,6 +285,58 @@ export const dict = {
       successTitle: "Demande envoyée !",
       successMsg: (prenom: string, tel: string) =>
         `Merci ${prenom}, nous avons bien reçu votre demande de devis. Notre équipe vous recontacte très vite au ${tel}.`,
+    },
+    legal: {
+      title: "Mentions légales",
+      updated: "Dernière mise à jour : novembre 2026",
+      backHome: "Retour à l'accueil",
+      sections: [
+        {
+          heading: "Éditeur du site",
+          body: "Ce site est édité par Easy Move, entreprise de déménagement basée à Alger, Algérie. Numéro de registre de commerce et NIF disponibles sur demande. Pour toute question, contactez-nous via WhatsApp ou par téléphone au 07 78 63 74 33.",
+        },
+        {
+          heading: "Directeur de la publication",
+          body: "La direction de la publication est assurée par le représentant légal d'Easy Move.",
+        },
+        {
+          heading: "Hébergement",
+          body: "Le site est hébergé par Hostinger International Ltd. Pour plus d'informations sur l'hébergeur, consultez hostinger.fr.",
+        },
+        {
+          heading: "Propriété intellectuelle",
+          body: "L'ensemble des contenus présents sur ce site (textes, images, logo, charte graphique) est la propriété d'Easy Move, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.",
+        },
+        {
+          heading: "Données personnelles",
+          body: "Les informations collectées via le formulaire de devis (nom, téléphone, email, adresse, photos) sont utilisées exclusivement pour traiter votre demande de déménagement et ne sont jamais revendues à des tiers. Vous pouvez demander leur suppression à tout moment en nous contactant.",
+        },
+        {
+          heading: "Contact",
+          body: "Pour toute question relative à ces mentions légales, contactez-nous via WhatsApp, Instagram (@easy_move_dz) ou par téléphone au 07 78 63 74 33.",
+        },
+      ],
+    },
+    status: {
+      notFound: {
+        title: "Page introuvable",
+        subtitle:
+          "On dirait que ce carton s'est égaré en chemin. La page que vous cherchez n'existe pas ou a été déplacée.",
+        cta: "Retour à l'accueil",
+      },
+      error: {
+        title: "Un imprévu s'est produit",
+        subtitle:
+          "Quelque chose s'est mal passé de notre côté. Réessayez, ou revenez à l'accueil en attendant.",
+        retry: "Réessayer",
+        cta: "Retour à l'accueil",
+      },
+      construction: {
+        badge: "Bientôt disponible",
+        title: "Cette page est en construction",
+        subtitle: "Notre équipe prépare quelque chose de bien. Revenez très vite !",
+        cta: "Retour à l'accueil",
+      },
     },
   },
   en: {
@@ -492,6 +545,7 @@ export const dict = {
       devisBtn: "Free quote",
       whatsapp: "WhatsApp",
       whatsappChatAria: "Chat on WhatsApp",
+      legalLink: "Legal notice",
     },
     miniFooter: {
       madeBy: "Website designed by",
@@ -562,6 +616,58 @@ export const dict = {
       successTitle: "Request sent!",
       successMsg: (prenom: string, tel: string) =>
         `Thank you ${prenom}, we've received your quote request. Our team will contact you shortly at ${tel}.`,
+    },
+    legal: {
+      title: "Legal notice",
+      updated: "Last updated: November 2026",
+      backHome: "Back to home",
+      sections: [
+        {
+          heading: "Site publisher",
+          body: "This site is published by Easy Move, a moving company based in Algiers, Algeria. Trade register number and tax ID available on request. For any questions, contact us via WhatsApp or by phone at 07 78 63 74 33.",
+        },
+        {
+          heading: "Publication director",
+          body: "Publication is managed by Easy Move's legal representative.",
+        },
+        {
+          heading: "Hosting",
+          body: "This site is hosted by Hostinger International Ltd. For more information about the host, visit hostinger.com.",
+        },
+        {
+          heading: "Intellectual property",
+          body: "All content on this site (text, images, logo, visual identity) is the property of Easy Move, unless stated otherwise, and may not be reproduced without prior authorization.",
+        },
+        {
+          heading: "Personal data",
+          body: "Information collected through the quote form (name, phone, email, address, photos) is used solely to process your moving request and is never sold to third parties. You may request its deletion at any time by contacting us.",
+        },
+        {
+          heading: "Contact",
+          body: "For any question about this legal notice, contact us via WhatsApp, Instagram (@easy_move_dz) or by phone at 07 78 63 74 33.",
+        },
+      ],
+    },
+    status: {
+      notFound: {
+        title: "Page not found",
+        subtitle:
+          "Looks like this box got lost along the way. The page you're looking for doesn't exist or has moved.",
+        cta: "Back to home",
+      },
+      error: {
+        title: "Something unexpected happened",
+        subtitle:
+          "Something went wrong on our end. Try again, or head back home in the meantime.",
+        retry: "Try again",
+        cta: "Back to home",
+      },
+      construction: {
+        badge: "Coming soon",
+        title: "This page is under construction",
+        subtitle: "Our team is building something great. Check back soon!",
+        cta: "Back to home",
+      },
     },
   },
   ar: {
@@ -767,6 +873,7 @@ export const dict = {
       devisBtn: "عرض سعر مجاني",
       whatsapp: "واتساب",
       whatsappChatAria: "تحدث عبر واتساب",
+      legalLink: "الإشعار القانوني",
     },
     miniFooter: {
       madeBy: "صمم هذا الموقع",
@@ -837,6 +944,58 @@ export const dict = {
       successTitle: "تم إرسال الطلب!",
       successMsg: (prenom: string, tel: string) =>
         `شكرًا ${prenom}، لقد استلمنا طلب عرض السعر الخاص بك. سيتواصل معك فريقنا قريبًا على الرقم ${tel}.`,
+    },
+    legal: {
+      title: "الإشعار القانوني",
+      updated: "آخر تحديث: نوفمبر 2026",
+      backHome: "العودة إلى الرئيسية",
+      sections: [
+        {
+          heading: "ناشر الموقع",
+          body: "هذا الموقع تابع لشركة Easy Move لخدمات النقل والتوضيب، ومقرها الجزائر العاصمة. رقم السجل التجاري والرقم الجبائي متوفران عند الطلب. لأي استفسار، تواصلوا معنا عبر واتساب أو بالهاتف على الرقم 07 78 63 74 33.",
+        },
+        {
+          heading: "مدير النشر",
+          body: "يتولى الممثل القانوني لشركة Easy Move مسؤولية النشر.",
+        },
+        {
+          heading: "الاستضافة",
+          body: "هذا الموقع مستضاف لدى Hostinger International Ltd. لمزيد من المعلومات حول مزود الاستضافة، يرجى زيارة hostinger.com.",
+        },
+        {
+          heading: "الملكية الفكرية",
+          body: "جميع المحتويات الموجودة في هذا الموقع (النصوص، الصور، الشعار، الهوية البصرية) هي ملك لشركة Easy Move، ما لم يُذكر خلاف ذلك، ولا يجوز إعادة إنتاجها دون إذن مسبق.",
+        },
+        {
+          heading: "البيانات الشخصية",
+          body: "المعلومات التي يتم جمعها عبر استمارة طلب عرض السعر (الاسم، الهاتف، البريد الإلكتروني، العنوان، الصور) تُستخدم حصريًا لمعالجة طلب انتقالكم، ولا يتم بيعها لأي طرف ثالث. يمكنكم طلب حذفها في أي وقت بالتواصل معنا.",
+        },
+        {
+          heading: "التواصل",
+          body: "لأي سؤال يخص هذا الإشعار القانوني، تواصلوا معنا عبر واتساب أو إنستغرام (@easy_move_dz) أو بالهاتف على الرقم 07 78 63 74 33.",
+        },
+      ],
+    },
+    status: {
+      notFound: {
+        title: "الصفحة غير موجودة",
+        subtitle:
+          "يبدو أن هذا الكرتون قد ضاع في الطريق. الصفحة التي تبحثون عنها غير موجودة أو تم نقلها.",
+        cta: "العودة إلى الرئيسية",
+      },
+      error: {
+        title: "حدث خطأ غير متوقع",
+        subtitle:
+          "حدث خطأ ما من جانبنا. أعيدوا المحاولة، أو عودوا إلى الصفحة الرئيسية في غضون ذلك.",
+        retry: "إعادة المحاولة",
+        cta: "العودة إلى الرئيسية",
+      },
+      construction: {
+        badge: "قريبًا",
+        title: "هذه الصفحة قيد الإنشاء",
+        subtitle: "فريقنا يعمل على إعداد شيء رائع. عودوا قريبًا!",
+        cta: "العودة إلى الرئيسية",
+      },
     },
   },
 };

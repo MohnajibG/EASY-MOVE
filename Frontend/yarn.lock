@@ -1257,6 +1257,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cookie@npm:^1.0.1":
+  version: 1.1.1
+  resolution: "cookie@npm:1.1.1"
+  checksum: e40c4ff817a73ec0a41413654ca9a71e6207bd6e511151bb1d307aef2903eb59771127a85474afe0e12a8982804f7b03cce0bda798b55c306aca9608b4b9acab
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
@@ -1596,6 +1603,7 @@ __metadata:
     lucide-react: ^1.67.0
     react: ^19.3.1
     react-dom: ^19.3.1
+    react-router-dom: ^7.18.5
     tailwindcss: ^4.3.4
     typescript: ~7.0.2
     typescript-eslint: ^8.72.0
@@ -2190,6 +2198,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^7.18.5":
+  version: 7.18.5
+  resolution: "react-router-dom@npm:7.18.5"
+  dependencies:
+    react-router: 7.18.5
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: a5d533afabf9b4b5d1144ef507595acafdb86cd8849309443c969c5a89161c4704885b64ecf872b537f08c61aa37283763cb89d6285fd41424cb05ec70152ebe
+  languageName: node
+  linkType: hard
+
+"react-router@npm:7.18.5":
+  version: 7.18.5
+  resolution: "react-router@npm:7.18.5"
+  dependencies:
+    cookie: ^1.0.1
+    set-cookie-parser: ^2.6.0
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 1f0098ac2203327fba9780a7332108b5a120d57a290e8b0926b86d14e293c715555178bd553c64b2f2a249407997a16dda0bda3a6037f5b91201e8700a285f09
+  languageName: node
+  linkType: hard
+
 "react@npm:^19.3.1":
   version: 19.3.1
   resolution: "react@npm:19.3.1"
@@ -2277,6 +2313,13 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: de2584488f915435406d8e4bafda2c2b80ad42493f5ca355f30867264e3a81dc501bd59a173f304f8f40d6fb9be48b95c2de483b945a4ef3544806e28955f03b
+  languageName: node
+  linkType: hard
+
+"set-cookie-parser@npm:^2.6.0":
+  version: 2.7.3
+  resolution: "set-cookie-parser@npm:2.7.3"
+  checksum: 89515a0eb1894727dc89002d6e66683d7d6006b4f9b89e00d1ea0e19c68f1e9b28ed3effca4d71cad6f2101bd0da57156515c9fa81845a71bf6d01891ac181e7
   languageName: node
   linkType: hard
 

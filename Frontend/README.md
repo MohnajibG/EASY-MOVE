@@ -60,19 +60,42 @@ Sans ces variables, le site fonctionne normalement mais le formulaire affiche un
 2. Crée un template (Email Templates) — le contenu HTML prêt à coller se trouve dans [`supabase/emailjs-template.html`](supabase/emailjs-template.html)
 3. Renseigne ton adresse en "To Email" dans le template
 
-## Déploiement (Vercel)
+## Pages du site
 
-Le projet est prévu pour être déployé sur Vercel. Pense à ajouter les 5 variables d'environnement ci-dessus dans **Project Settings > Environment Variables** (type **Config**, pas Secret — ce sont des clés publiques côté client), pour les environnements Production + Preview + Development.
+Le site utilise `react-router-dom` pour gérer plusieurs pages :
+
+| Route               | Page                                                          |
+| -------------------- | -------------------------------------------------------------- |
+| `/`                   | Page d'accueil (one-page : hero, services, devis, avis, ...) |
+| `/mentions-legales`   | Mentions légales                                              |
+| `/en-construction`    | Page "en construction" (à utiliser pour une section pas encore prête) |
+| n'importe quelle autre URL | Page 404 "introuvable"                                  |
+
+Une page d'erreur animée s'affiche aussi automatiquement si une erreur JavaScript inattendue survient sur le site (voir `src/components/ErrorBoundary.tsx`).
+
+⚠️ Les mentions légales (`src/i18n/translations.ts`, clé `legal`) contiennent des informations génériques (hébergeur, usage des données). Le numéro de registre de commerce et le NIF de l'entreprise ne sont pas inclus — à ajouter par le client s'il souhaite les publier.
+
+## Déploiement
+
+Le site étant maintenant multi-pages (React Router), l'hébergement doit rediriger **toute** URL vers `index.html` pour que les routes fonctionnent en accès direct ou après un rafraîchissement :
+
+- **Vercel** : déjà configuré via [`vercel.json`](vercel.json) à la racine (rewrite automatique).
+- **Hostinger** (hébergement statique) : déjà configuré via [`public/.htaccess`](public/.htaccess), qui est copié automatiquement dans `dist/` au build — veille juste à bien uploader ce fichier caché avec le reste de `dist/`.
+
+Pense aussi à ajouter les 5 variables d'environnement ci-dessus (Vercel : **Project Settings > Environment Variables**, type **Config** car ce sont des clés publiques côté client, pour Production + Preview + Development).
 
 ## Structure du projet
 
 ```
 src/
+  pages/          pages de routes (HomePage, MentionsLegales, StatusPage 404/erreur/construction)
   components/     composants de chaque section du site (Hero, BookingForm, Footer, ...)
   i18n/           dictionnaire de traductions FR/EN/AR + contexte de langue
   lib/            clients Supabase et EmailJS
   constants/      liens réseaux sociaux
   assets/         images et visuels de marque
+public/
+  .htaccess       redirection SPA pour l'hébergement Hostinger
 supabase/
   schema.sql              schéma SQL à exécuter dans Supabase
   emailjs-template.html   template HTML pour la notification email

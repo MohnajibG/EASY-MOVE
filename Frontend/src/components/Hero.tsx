@@ -78,7 +78,7 @@ const Hero = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              href="#devis"
+              href="/#devis"
               className="group inline-flex items-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-black"
             >
               {t.hero.ctaPrimary}

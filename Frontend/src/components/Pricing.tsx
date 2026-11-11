@@ -40,7 +40,7 @@ const Pricing = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            href="#devis"
+            href="/#devis"
             className="mt-8 inline-flex items-center rounded-full bg-brand-green px-6 py-3.5 text-base font-semibold text-black"
           >
             {t.pricing.cta}

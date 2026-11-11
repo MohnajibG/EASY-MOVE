@@ -1,44 +1,16 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import BookingForm from "./components/BookingForm";
-import TrustBar from "./components/TrustBar";
-import Services from "./components/Services";
-import WhyUs from "./components/WhyUs";
-import Pricing from "./components/Pricing";
-import Storage from "./components/Storage";
-import Packing from "./components/Packing";
-import Gallery from "./components/Gallery";
-import GoogleReviews from "./components/GoogleReviews";
-import FAQ from "./components/FAQ";
-import InstagramFeed from "./components/InstagramFeed";
-import SocialCTA from "./components/SocialCTA";
-import Footer from "./components/Footer";
-import MiniFooter from "./components/MiniFooter";
-import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MentionsLegales from "./pages/MentionsLegales";
+import StatusPage from "./pages/StatusPage";
 
 const App = () => {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <BookingForm />
-        <TrustBar />
-        <Services />
-        <WhyUs />
-        <Pricing />
-        <Storage />
-        <Packing />
-        <Gallery />
-        <GoogleReviews />
-        <FAQ />
-        <InstagramFeed />
-        <SocialCTA />
-      </main>
-      <Footer />
-      <MiniFooter />
-      <FloatingWhatsApp />
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/mentions-legales" element={<MentionsLegales />} />
+      <Route path="/en-construction" element={<StatusPage variant="construction" />} />
+      <Route path="*" element={<StatusPage variant="notFound" />} />
+    </Routes>
   );
 };
 

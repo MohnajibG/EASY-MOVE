@@ -1,0 +1,11 @@
+# Fait fonctionner le routage React (SPA) sur l'hébergement Hostinger :
+# toute URL qui ne correspond pas à un fichier réel renvoie vers index.html,
+# pour que /mentions-legales, /en-construction, etc. s'affichent correctement
+# même en accès direct ou après rafraîchissement de la page.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
